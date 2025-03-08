@@ -1,0 +1,17 @@
+.typing-container {
+    display: inline-block;
+}
+  
+  .typing-letter {
+    opacity: 0;
+    animation: typing 0.5s forwards;
+  }
+  
+  @keyframes typing {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

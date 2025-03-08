@@ -28,3 +28,7 @@ body {
 h1, h2 {
   font-family: "Bitter", serif;
 }
+
+.font-segoe-ui {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
