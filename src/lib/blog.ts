@@ -18,12 +18,16 @@ export type Blog = {
   content?: string;
 };
 
+function fileNameToSlug(fileName: string): string {
+  return fileName.replace(/\.md$/, '').replace(/^\d+-/, '');
+}
+
 export async function getAllBlogs(): Promise<Blog[]> {
   const fileNames = fs.readdirSync(blogsDirectory);
   const blogs = fileNames
     .filter((name) => name.endsWith('.md'))
     .map((fileName) => {
-      const slug = fileName.replace(/\.md$/, '');
+      const slug = fileNameToSlug(fileName);
       const fullPath = path.join(blogsDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, 'utf8');
       const { data } = matter(fileContents);
@@ -44,7 +48,10 @@ export async function getAllBlogs(): Promise<Blog[]> {
 }
 
 export async function getBlogBySlug(slug: string): Promise<Blog> {
-  const fullPath = path.join(blogsDirectory, `${slug}.md`);
+  const fileNames = fs.readdirSync(blogsDirectory);
+  const match = fileNames.find((name) => name.endsWith('.md') && fileNameToSlug(name) === slug);
+  if (!match) throw new Error(`Blog not found: ${slug}`);
+  const fullPath = path.join(blogsDirectory, match);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
 
