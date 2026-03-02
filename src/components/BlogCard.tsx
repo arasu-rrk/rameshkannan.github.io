@@ -29,7 +29,7 @@ export default function BlogCard({ blog }: { blog: Blog }) {
         <span className="text-xs text-gray-400">{formatDate(blog.date)}</span>
       </div>
 
-      <h2 className="text-xl font-bold text-gray-900 mb-2 leading-snug hover:text-blue-700 transition-colors">
+      <h2 className="text-xl font-bold font-playfair text-gray-900 mb-2 leading-snug hover:text-blue-700 transition-colors">
         <Link href={`/blog/${blog.slug}`}>{blog.title}</Link>
       </h2>
 

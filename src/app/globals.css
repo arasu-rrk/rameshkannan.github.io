@@ -29,6 +29,10 @@ h1, h2 {
   font-family: var(--font-bitter), serif;
 }
 
+.font-playfair {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
 .font-segoe-ui {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
