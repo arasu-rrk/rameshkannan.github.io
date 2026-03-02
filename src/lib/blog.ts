@@ -1,10 +1,22 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { remark } from 'remark';
-import remarkHtml from 'remark-html';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import rehypeHighlight from 'rehype-highlight';
+import rehypeStringify from 'rehype-stringify';
 
 const blogsDirectory = path.join(process.cwd(), 'content/blogs');
+
+function addHeadingAnchors(html: string): string {
+  return html.replace(/<h([2-6])>(.*?)<\/h\1>/gi, (_, level, inner) => {
+    const text = inner.replace(/<[^>]+>/g, '');
+    const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').trim();
+    const anchor = `<a class="heading-anchor" href="#${id}" aria-label="Link to this section"></a>`;
+    return `<h${level} id="${id}">${inner}${anchor}</h${level}>`;
+  });
+}
 
 export type Blog = {
   slug: string;
@@ -55,8 +67,13 @@ export async function getBlogBySlug(slug: string): Promise<Blog> {
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
 
-  const processedContent = await remark().use(remarkHtml).process(content);
-  const htmlContent = processedContent.toString();
+  const processedContent = await unified()
+    .use(remarkParse)
+    .use(remarkRehype)
+    .use(rehypeHighlight)
+    .use(rehypeStringify)
+    .process(content);
+  const htmlContent = addHeadingAnchors(processedContent.toString());
 
   return {
     slug,

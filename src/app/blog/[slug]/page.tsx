@@ -86,7 +86,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight mb-4">
+        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight mb-4" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>
           {blog.title}
         </h1>
 
@@ -114,12 +114,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         {/* Content */}
         <div
-          className="prose prose-gray max-w-none leading-relaxed"
-          style={{
-            fontSize: '1.0625rem',
-            lineHeight: '1.8',
-            color: '#374151',
-          }}
+          className="leading-relaxed"
           dangerouslySetInnerHTML={{ __html: blog.content ?? '' }}
         />
 
