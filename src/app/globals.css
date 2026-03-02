@@ -20,9 +20,13 @@
 }
 
 body {
-  background: url(https://arasu-rrk.com/images/me/rrk-black-white.jpeg) no-repeat right top / contain fixed;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Background image for homepage only */
+.home-background {
+  background: url(https://arasu-rrk.com/images/me/rrk-black-white.jpeg) no-repeat right top / contain fixed;
 }
 
 h1, h2 {
