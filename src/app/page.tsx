@@ -29,12 +29,12 @@ export default function Home() {
             >
               Read Blog
             </a>
-            <a
+            {/* <a
               href="/about"
               className="px-6 py-2.5 rounded-lg text-sm font-semibold transition-colors border-2 border-[#100f3a] text-[#100f3a] hover:bg-[#100f3a] hover:text-white"
             >
               About Me
-            </a>
+            </a> */}
           </div>
         </div>
 
