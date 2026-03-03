@@ -4,7 +4,7 @@ date: "2019-12-14"
 excerpt: "Learn how to allow your IP address or IP range through the Azure SQL Server firewall so you can connect from outside Azure."
 category: "Cloud"
 author: "Ramesh Kannan"
-coverImage: ""
+coverImage: "/images/002/azure-sql-firewall.png"
 tags: ["firewall", "azure-sql-server", "azure-sql-database", "azure"]
 ---
 

@@ -2,7 +2,7 @@
 title: "Basic Git commands: Every developer should know"
 date: "2019-12-16"
 excerpt: "A practical reference covering the essential Git commands for cloning, branching, staging, committing, pushing, and reverting changes."
-category: "DevOps"
+category: "Git"
 author: "Ramesh Kannan"
 coverImage: ""
 tags: ["git"]
