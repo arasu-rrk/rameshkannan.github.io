@@ -1,5 +1,5 @@
 ---
-title: "How to deploy Syncfusion Dashboard Server in Azure?"
+title: "How to deploy Syncfusion Dashboard Server in Azure"
 date: "2018-01-01"
 excerpt: "A step-by-step guide to deploying Syncfusion Dashboard Server on an Azure Virtual Machine using the Azure Marketplace."
 category: "Cloud"
@@ -7,6 +7,8 @@ author: "Ramesh Kannan"
 coverImage: ""
 tags: ["syncfusion", "dashboard-server", "azure"]
 ---
+
+> **Originally published** on [arasu-rrk.com](https://arasu-rrk.com/blog/how-to-deploy-syncfusion-dashboard-server-in-azure).
 
 We have simplified the Syncfusion Dashboard Server deployment in Azure. All you need is to purchase a new virtual machine in Azure and Syncfusion Dashboard Server works with the lowest plan too.
 

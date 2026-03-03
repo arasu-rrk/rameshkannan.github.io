@@ -1,12 +1,14 @@
 ---
-title: "How to send an SMTP mail using SendGrid?"
+title: "How to send an SMTP mail using SendGrid"
 date: "2019-12-15"
 excerpt: "Set up SendGrid's SMTP relay in minutes — create a restricted API key with mail send permissions and plug in the credentials."
 category: "Technical"
 author: "Ramesh Kannan"
-coverImage: ""
+coverImage: "/images/003/sendgrid-smtp.png"
 tags: ["sendgrid", "smtp", "csharp"]
 ---
+
+> **Originally published** on [arasu-rrk.com](https://arasu-rrk.com/blog/how-to-send-an-smtp-mail-using-sendgrid).
 
 [SendGrid](https://sendgrid.com) (now owned by [Twilio](https://www.twilio.com)) is used by some of the biggest names in the industry such as Uber, Spotify, Yelp, Airbnb, and Kinsta. It originally started as a transactional email SMTP and API service designed for developers. They also offer email marketing features.
 

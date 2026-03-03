@@ -12,21 +12,17 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-raleway), sans-serif;
 }
 
-/* Background image for homepage only */
-.home-background {
-  background: url(https://arasu-rrk.com/images/me/rrk-black-white.jpeg) no-repeat right top / contain fixed;
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 h1, h2 {
@@ -39,4 +35,49 @@ h1, h2 {
 
 .font-segoe-ui {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.blog-content blockquote {
+  border-left: 3px solid #100f3a;
+  background-color: #f5f0f0;
+  padding: 0.75rem 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0 0.375rem 0.375rem 0;
+  color: #374151;
+  font-size: 0.9rem;
+}
+
+.blog-content blockquote p {
+  margin: 0;
+}
+
+.blog-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  overflow-x: auto;
+  display: block;
+}
+
+.blog-content thead tr {
+  background-color: #f3f4f6;
+  text-align: left;
+}
+
+.blog-content th,
+.blog-content td {
+  padding: 0.65rem 1rem;
+  border: 1px solid #e5e7eb;
+  vertical-align: top;
+}
+
+.blog-content th {
+  font-weight: 600;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.blog-content tbody tr:nth-child(even) {
+  background-color: #f9fafb;
 }

@@ -4,9 +4,11 @@ date: "2019-12-16"
 excerpt: "A practical reference covering the essential Git commands for cloning, branching, staging, committing, pushing, and reverting changes."
 category: "Git"
 author: "Ramesh Kannan"
-coverImage: ""
+coverImage: "/images/004/basic-git-commands.png"
 tags: ["git"]
 ---
+
+> **Originally published** on [arasu-rrk.com](https://arasu-rrk.com/blog/basic-git-commands-every-developer-should-know).
 
 [Git](https://en.wikipedia.org/wiki/Git) is a free and open-source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
 

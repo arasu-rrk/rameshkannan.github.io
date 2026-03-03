@@ -114,7 +114,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         {/* Content */}
         <div
-          className="leading-relaxed"
+          className="blog-content leading-relaxed"
           dangerouslySetInnerHTML={{ __html: blog.content ?? '' }}
         />
 
