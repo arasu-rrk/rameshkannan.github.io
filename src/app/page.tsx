@@ -1,3 +1,6 @@
+import Image from "next/image";
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main className="bg-[#f5f0f0] min-h-[calc(100vh-65px)] flex items-center">
@@ -23,12 +26,12 @@ export default function Home() {
             engineering problems into clean, reliable solutions.
           </p>
           <div className="flex flex-wrap gap-3 justify-center md:justify-start mt-2">
-            <a
+            <Link
               href="/blog"
               className="px-6 py-2.5 rounded-lg text-sm font-semibold text-white transition-colors bg-[#100f3a] hover:bg-[#1e1c5e]"
             >
               Read Blog
-            </a>
+            </Link>
             {/* <a
               href="/about"
               className="px-6 py-2.5 rounded-lg text-sm font-semibold transition-colors border-2 border-[#100f3a] text-[#100f3a] hover:bg-[#100f3a] hover:text-white"
@@ -40,11 +43,14 @@ export default function Home() {
 
         {/* Photo — top on mobile, right on desktop */}
         <div className="flex-shrink-0 flex justify-center">
-          <div className="w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-white">
-            <img
+          <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-white">
+            <Image
               src="/images/me/ramesh-kannan.jpeg"
               alt="Ramesh Kannan"
-              className="w-full h-full object-cover"
+              fill
+              sizes="(min-width: 1024px) 24rem, (min-width: 768px) 20rem, (min-width: 640px) 18rem, 14rem"
+              className="object-cover"
+              priority
             />
           </div>
         </div>
