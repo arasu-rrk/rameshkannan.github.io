@@ -2,6 +2,6 @@
 
 ## Google Tag Manager
 
-Set `NEXT_PUBLIC_GTM_ID` to the GTM container ID in the local environment and deployment settings. When set, the GTM container loads and a `page_view` event is pushed on initial load and client-side navigation, including the page path, query string, URL, and title.
+Set `NEXT_PUBLIC_GTM_ID` to the GTM container ID in the local environment and deployment settings. When set, the GTM container loads.
 
-In GTM, configure the Google tag not to send an automatic page view, then add a GA4 event tag with event name `page_view` triggered by a Custom Event named `page_view`. This avoids counting the initial visit twice.
+In GTM, configure a Google tag for your GA4 measurement ID and leave automatic `page_view` sending enabled. In the GA4 web data stream's Enhanced Measurement settings, enable **Page changes based on browser history events** to track client-side navigation. Do not add a separate Custom Event tag for `page_view`, as it would duplicate the automatically collected events.

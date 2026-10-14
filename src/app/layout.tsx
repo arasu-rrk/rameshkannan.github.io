@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Suspense } from "react";
 import { Geist, Geist_Mono, Bitter, Playfair_Display, Raleway } from "next/font/google";
 import Navbar from "@/components/Navbar";
-import GtmPageView from "@/components/GtmPageView";
 import "./globals.css";
 
 const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
@@ -71,9 +69,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 title="Google Tag Manager"
               />
             </noscript>
-            <Suspense fallback={null}>
-              <GtmPageView />
-            </Suspense>
           </>
         )}
         <Navbar />
