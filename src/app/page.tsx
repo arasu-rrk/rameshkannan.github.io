@@ -1,5 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Ramesh Kannan",
+  description: "Senior Software Engineer specializing in .NET, cloud architecture, and scalable systems.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    title: "Ramesh Kannan",
+    description: "Senior Software Engineer specializing in .NET, cloud architecture, and scalable systems.",
+    url: "/",
+    siteName: "Ramesh Kannan",
+    images: ["/images/me/ramesh-kannan.jpeg"],
+  },
+};
 
 export default function Home() {
   return (

@@ -1,4 +1,19 @@
 import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About | Ramesh Kannan",
+  description: "About Ramesh Kannan, Senior Software Engineer.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    type: "website",
+    title: "About | Ramesh Kannan",
+    description: "About Ramesh Kannan, Senior Software Engineer.",
+    url: "/about",
+    siteName: "Ramesh Kannan",
+    images: ["/images/me/ramesh-kannan.jpeg"],
+  },
+};
 
 export default function About() {
   return (

@@ -23,6 +23,8 @@ export type Blog = {
   slug: string;
   title: string;
   date: string;
+  displayModifiedDate?: string;
+  modifiedDate: string;
   excerpt: string;
   category: string;
   author: string;
@@ -30,6 +32,10 @@ export type Blog = {
   tags: string[];
   content?: string;
 };
+
+export function toIsoDateTime(date: string): string {
+  return date.includes('T') ? date : `${date.slice(0, 10)}T00:00:00Z`;
+}
 
 function fileNameToSlug(fileName: string): string {
   return fileName.replace(/\.md$/, '').replace(/^\d+-/, '');
@@ -49,6 +55,10 @@ export async function getAllBlogs(): Promise<Blog[]> {
         slug,
         title: data.title as string,
         date: data.date as string,
+        displayModifiedDate: typeof data.displayModifiedDate === 'string' && data.displayModifiedDate.trim()
+          ? data.displayModifiedDate
+          : undefined,
+        modifiedDate: (data.modifiedDate as string) ?? (data.date as string),
         excerpt: data.excerpt as string,
         category: data.category as string,
         author: data.author as string,
@@ -81,6 +91,10 @@ export async function getBlogBySlug(slug: string): Promise<Blog> {
     slug,
     title: data.title as string,
     date: data.date as string,
+    displayModifiedDate: typeof data.displayModifiedDate === 'string' && data.displayModifiedDate.trim()
+      ? data.displayModifiedDate
+      : undefined,
+    modifiedDate: (data.modifiedDate as string) ?? (data.date as string),
     excerpt: data.excerpt as string,
     category: data.category as string,
     author: data.author as string,

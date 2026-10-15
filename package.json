@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "prebuild": "bash scripts/update-blog-modified-dates.sh",
     "build": "next build",
     "start": "next start",
     "lint": "eslint ."
