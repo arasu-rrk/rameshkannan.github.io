@@ -1,6 +1,7 @@
 ---
 title: "Standardizing .NET Solutions with Directory.Build.props and Centralized Package Management"
 date: "2026-03-03"
+modifiedDate: "2026-10-15T16:20:54+01:00"
 excerpt: "Managing multiple .NET projects? This guide demonstrates how to centralize build settings and NuGet package versions using two powerful files, reducing duplication, simplifying upgrades, and strengthening dependency governance."
 category: ".NET"
 author: "Ramesh Kannan"
@@ -162,4 +163,3 @@ If your solution has more than 5–10 projects, this should not be optional. It 
 
 * <https://learn.microsoft.com/en-us/visualstudio/msbuild/customize-by-directory>
 * <https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management>
-

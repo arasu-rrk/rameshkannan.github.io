@@ -31,7 +31,7 @@ npm run start
 
 ## Deployment and domains
 
-Cloudflare Pages builds and deploys the site from the GitHub repository. Configure the Pages project with build command `npm run build` and build output directory `out`. The Next.js configuration exports a static site for Pages. Keep the apex (`rameshkannan.com`) and `www` hostnames assigned to the Pages project and configured in Cloudflare DNS.
+Cloudflare Pages builds and deploys the site from the GitHub repository. Configure the Pages project with build command `npm run build` and build output directory `out`. The build automatically runs `scripts/update-blog-modified-dates.sh` first, updating only the blog posts matched by the filename patterns in `scripts/blogs-to-update.json` (for example, `005-*.md`) to the build machine's current local date, time, and timezone. Edit that JSON file to change which posts are updated. An optional, non-empty `displayModifiedDate` in blog frontmatter controls the visible “Last updated” date independently of `modifiedDate`, which is used for Open Graph and structured data. If `displayModifiedDate` is absent or empty, no visible “Last updated” date is shown. Date-only values submitted in metadata are represented as midnight UTC; the build-generated modification timestamp includes the publishing machine's local time and timezone offset. The script uses Node.js for consistent cross-platform date and file handling. The Next.js configuration exports a static site for Pages. Keep the apex (`rameshkannan.com`) and `www` hostnames assigned to the Pages project and configured in Cloudflare DNS.
 
 Configure `NEXT_PUBLIC_GTM_ID` in the Cloudflare Pages build environment for the required deployment targets, then redeploy after changing it.
 
