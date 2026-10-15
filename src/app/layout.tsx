@@ -37,6 +37,15 @@ const raleway = Raleway({
 export const metadata: Metadata = {
   title: "Ramesh Kannan",
   description: "Senior .NET Full Stack developer",
+  metadataBase: new URL("https://rameshkannan.com"),
+  openGraph: {
+    type: "website",
+    title: "Ramesh Kannan",
+    description: "Senior .NET Full Stack developer",
+    url: "/",
+    siteName: "Ramesh Kannan",
+    images: ["/images/me/ramesh-kannan.jpeg"],
+  },
 };
 
 export default function RootLayout({

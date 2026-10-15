@@ -1,4 +1,4 @@
-import { getAllBlogs, getBlogBySlug } from '@/lib/blog';
+import { getAllBlogs, getBlogBySlug, toIsoDateTime } from '@/lib/blog';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -35,9 +35,25 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const blog = await getBlogBySlug(slug).catch(() => null);
   if (!blog) return {};
+  const image = blog.coverImage || '/images/me/ramesh-kannan.jpeg';
+  const publishedTime = toIsoDateTime(blog.date);
+  const modifiedTime = toIsoDateTime(blog.modifiedDate);
   return {
     title: `${blog.title} | Ramesh Kannan`,
     description: blog.excerpt,
+    alternates: { canonical: `/blog/${blog.slug}` },
+    openGraph: {
+      type: 'article' as const,
+      title: `${blog.title} | Ramesh Kannan`,
+      description: blog.excerpt,
+      url: `/blog/${blog.slug}`,
+      siteName: 'Ramesh Kannan',
+      images: [image],
+      publishedTime,
+      modifiedTime,
+      authors: [blog.author],
+      tags: blog.tags,
+    },
   };
 }
 
@@ -48,9 +64,34 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const colors = categoryColors[blog.category] ?? { bg: 'bg-gray-100', text: 'text-gray-700' };
   const gradient = categoryGradients[blog.category] ?? 'from-gray-400 to-gray-600';
+  const image = blog.coverImage
+    ? new URL(blog.coverImage, 'https://rameshkannan.com').href
+    : 'https://rameshkannan.com/images/me/ramesh-kannan.jpeg';
+  const publishedTime = toIsoDateTime(blog.date);
+  const modifiedTime = toIsoDateTime(blog.modifiedDate);
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: blog.title,
+    description: blog.excerpt,
+    image,
+    datePublished: publishedTime,
+    dateModified: modifiedTime,
+    author: {
+      '@type': 'Person',
+      name: blog.author,
+    },
+    mainEntityOfPage: `https://rameshkannan.com/blog/${blog.slug}`,
+  };
 
   return (
     <div className="min-h-screen py-12 px-4">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, '\\u003c'),
+        }}
+      />
       <div className="max-w-4xl mx-auto">
         {/* Breadcrumb */}
         <nav className="mb-8 text-sm text-gray-500">
@@ -77,12 +118,23 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           )}
         </div>
 
-        {/* Category + Date */}
+        {/* Category + publication dates */}
         <div className="flex flex-wrap items-center gap-3 mb-4">
           <span className={`text-xs font-semibold px-3 py-1 rounded-full ${colors.bg} ${colors.text}`}>
             {blog.category}
           </span>
-          <span className="text-sm text-gray-500">{formatDate(blog.date)}</span>
+          <span className={`text-xs px-3 py-1 rounded-full bg-gray-100`}>
+          <time className="text-xs font-semibold text-gray-500" dateTime={blog.date}>
+            Published: {formatDate(blog.date)}
+          </time>
+          </span>
+          {blog.displayModifiedDate && (
+                                        <span className={`text-xs px-3 py-1 rounded-full bg-gray-100`}>
+            <time className="text-xs font-semibold text-gray-500" dateTime={blog.displayModifiedDate}>
+              Last updated: {formatDate(blog.displayModifiedDate)}
+            </time>
+                                        </span>
+          )}
         </div>
 
         {/* Title */}
@@ -95,9 +147,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <div className="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center text-white text-sm font-bold">
             RK
           </div>
-          <div>
-            <p className="text-sm font-medium text-gray-800">{blog.author}</p>
-            <p className="text-xs text-gray-500">Senior .NET Full Stack Developer</p>
+          <div className="flex flex-col leading-tight">
+            <span className="text-sm font-medium text-gray-800">{blog.author}</span>
+            <span className="text-xs text-gray-500">Senior .NET Full Stack Developer</span>
           </div>
         </div>
 
