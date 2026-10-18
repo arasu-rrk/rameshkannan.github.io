@@ -13,6 +13,12 @@ export const metadata = {
     siteName: 'Ramesh Kannan',
     images: ['/images/me/ramesh-kannan.jpeg'],
   },
+  twitter: {
+    card: 'summary_large_image' as const,
+    title: 'Engineering Blog | Ramesh Kannan',
+    description: 'Articles on .NET, cloud platforms, software architecture, and engineering best practices.',
+    images: ['/images/me/ramesh-kannan.jpeg'],
+  },
 };
 
 export default async function BlogPage() {

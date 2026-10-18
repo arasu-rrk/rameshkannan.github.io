@@ -13,7 +13,7 @@ See [Project setup](PROJECT_SETUP.md) for the technologies, local development co
 
 ## Search engine indexing
 
-The static build generates `/robots.txt` and `/sitemap.xml`; the sitemap includes the home, about, blog index, and published blog posts. After deployment, verify both URLs are publicly accessible and submit `https://rameshkannan.com/sitemap.xml` in Google Search Console and Bing Webmaster Tools.
+The static build generates `/robots.txt` and `/sitemap.xml`; the sitemap includes the home page, blog index, and published blog posts. The About page is intentionally left out of public navigation and the sitemap for now. After deployment, verify both URLs are publicly accessible and submit `https://rameshkannan.com/sitemap.xml` in Google Search Console and Bing Webmaster Tools.
 
 ## Google Tag Manager
 
