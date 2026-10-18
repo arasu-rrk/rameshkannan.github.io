@@ -1,25 +1,16 @@
+import Image from "next/image";
 import type { Metadata } from "next";
-import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About",
-  description:
-    "Learn about Ramesh Kannan, a senior software engineer with over 13 years of experience building .NET applications and cloud-native systems.",
+  title: "About | Ramesh Kannan",
+  description: "About Ramesh Kannan, Senior Software Engineer.",
   alternates: { canonical: "/about" },
   openGraph: {
     type: "website",
-    title: "About Ramesh Kannan",
-    description:
-      "Learn about Ramesh Kannan, a senior software engineer focused on .NET, full-stack development, and cloud architecture.",
+    title: "About | Ramesh Kannan",
+    description: "About Ramesh Kannan, Senior Software Engineer.",
     url: "/about",
     siteName: "Ramesh Kannan",
-    images: ["/images/me/ramesh-kannan.jpeg"],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "About Ramesh Kannan",
-    description:
-      "Learn about Ramesh Kannan, a senior software engineer focused on .NET, full-stack development, and cloud architecture.",
     images: ["/images/me/ramesh-kannan.jpeg"],
   },
 };

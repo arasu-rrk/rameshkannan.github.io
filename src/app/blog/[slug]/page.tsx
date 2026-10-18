@@ -55,12 +55,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       authors: [blog.author],
       tags: blog.tags,
     },
-    twitter: {
-      card: 'summary_large_image',
-      title: blog.title,
-      description: blog.excerpt,
-      images: [image],
-    },
   };
 }
 
@@ -87,18 +81,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     author: {
       '@type': 'Person',
       name: blog.author,
-      url: 'https://rameshkannan.com/',
     },
     mainEntityOfPage: `https://rameshkannan.com/blog/${blog.slug}`,
-  };
-  const breadcrumbData = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://rameshkannan.com/' },
-      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://rameshkannan.com/blog' },
-      { '@type': 'ListItem', position: 3, name: blog.title, item: `https://rameshkannan.com/blog/${blog.slug}` },
-    ],
   };
 
   return (
@@ -107,12 +91,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(structuredData).replace(/</g, '\\u003c'),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbData).replace(/</g, '\\u003c'),
         }}
       />
       <div className="max-w-4xl mx-auto">

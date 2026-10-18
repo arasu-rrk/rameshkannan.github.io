@@ -3,26 +3,15 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Ramesh Kannan | Senior Software Engineer",
+  title: "Ramesh Kannan",
   description: "Senior Software Engineer specializing in .NET, cloud architecture, and scalable systems.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
-    title: "Ramesh Kannan | Senior Software Engineer",
+    title: "Ramesh Kannan",
     description: "Senior Software Engineer specializing in .NET, cloud architecture, and scalable systems.",
     url: "/",
     siteName: "Ramesh Kannan",
-    images: [
-      {
-        url: "/images/me/ramesh-kannan.jpeg",
-        alt: "Ramesh Kannan, senior software engineer",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Ramesh Kannan | Senior Software Engineer",
-    description: "Senior Software Engineer specializing in .NET, cloud architecture, and scalable systems.",
     images: ["/images/me/ramesh-kannan.jpeg"],
   },
 };
