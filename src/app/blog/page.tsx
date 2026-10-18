@@ -2,15 +2,21 @@ import { getAllBlogs } from '@/lib/blog';
 import BlogList from '@/components/BlogList';
 
 export const metadata = {
-  title: 'Blog | Ramesh Kannan',
+  title: 'Engineering Blog',
   description: 'Articles on .NET, cloud platforms, software architecture, and engineering best practices.',
   alternates: { canonical: '/blog' },
   openGraph: {
     type: 'website' as const,
-    title: 'Blog | Ramesh Kannan',
+    title: 'Engineering Blog | Ramesh Kannan',
     description: 'Articles on .NET, cloud platforms, software architecture, and engineering best practices.',
     url: '/blog',
     siteName: 'Ramesh Kannan',
+    images: ['/images/me/ramesh-kannan.jpeg'],
+  },
+  twitter: {
+    card: 'summary_large_image' as const,
+    title: 'Engineering Blog | Ramesh Kannan',
+    description: 'Articles on .NET, cloud platforms, software architecture, and engineering best practices.',
     images: ['/images/me/ramesh-kannan.jpeg'],
   },
 };

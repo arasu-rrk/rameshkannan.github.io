@@ -11,6 +11,10 @@ flowchart LR
 
 See [Project setup](PROJECT_SETUP.md) for the technologies, local development commands, deployment, and analytics configuration.
 
+## Search engine indexing
+
+The static build generates `/robots.txt` and `/sitemap.xml`; the sitemap includes the home, about, blog index, and published blog posts. After deployment, verify both URLs are publicly accessible and submit `https://rameshkannan.com/sitemap.xml` in Google Search Console and Bing Webmaster Tools.
+
 ## Google Tag Manager
 
 Set `NEXT_PUBLIC_GTM_ID` to the GTM container ID in the local environment and deployment settings. It must be available during the Next.js build; changing it requires a rebuild. When set at build time, the GTM container loads.
