@@ -35,15 +35,36 @@ const raleway = Raleway({
 });
 
 export const metadata: Metadata = {
-  title: "Ramesh Kannan",
-  description: "Senior .NET Full Stack developer",
+  title: {
+    default: "Ramesh Kannan | Senior Software Engineer",
+    template: "%s | Ramesh Kannan",
+  },
+  description:
+    "Ramesh Kannan is a senior software engineer specializing in .NET full-stack development, cloud architecture, and scalable systems on Azure, AWS, and GCP.",
   metadataBase: new URL("https://rameshkannan.com"),
+  applicationName: "Ramesh Kannan",
+  creator: "Ramesh Kannan",
+  publisher: "Ramesh Kannan",
   openGraph: {
     type: "website",
-    title: "Ramesh Kannan",
-    description: "Senior .NET Full Stack developer",
+    title: "Ramesh Kannan | Senior Software Engineer",
+    description:
+      "Senior software engineer specializing in .NET full-stack development, cloud architecture, and scalable systems.",
     url: "/",
     siteName: "Ramesh Kannan",
+    images: [
+      {
+        url: "/images/me/ramesh-kannan.jpeg",
+        alt: "Ramesh Kannan, senior software engineer",
+      },
+    ],
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ramesh Kannan | Senior Software Engineer",
+    description:
+      "Senior software engineer specializing in .NET full-stack development, cloud architecture, and scalable systems.",
     images: ["/images/me/ramesh-kannan.jpeg"],
   },
 };
