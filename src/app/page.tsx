@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Ramesh Kannan",
+  title: { absolute: "Ramesh Kannan | Senior Software Engineer" },
   description: "Senior Software Engineer specializing in .NET, cloud architecture, and scalable systems.",
   alternates: { canonical: "/" },
   openGraph: {
@@ -12,13 +12,62 @@ export const metadata: Metadata = {
     description: "Senior Software Engineer specializing in .NET, cloud architecture, and scalable systems.",
     url: "/",
     siteName: "Ramesh Kannan",
+    images: [
+      {
+        url: "/images/me/ramesh-kannan.jpeg",
+        alt: "Ramesh Kannan, senior software engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ramesh Kannan | Senior Software Engineer",
+    description: "Senior Software Engineer specializing in .NET, cloud architecture, and scalable systems.",
     images: ["/images/me/ramesh-kannan.jpeg"],
   },
 };
 
 export default function Home() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        name: "Ramesh Kannan",
+        url: "https://rameshkannan.com/",
+        description:
+          "Professional profile and engineering articles by Ramesh Kannan.",
+        inLanguage: "en",
+      },
+      {
+        "@type": "Person",
+        name: "Ramesh Kannan",
+        url: "https://rameshkannan.com/",
+        image: "https://rameshkannan.com/images/me/ramesh-kannan.jpeg",
+        jobTitle: "Senior Software Engineer",
+        description:
+          "Senior software engineer specializing in .NET full-stack development and cloud-native architectures on Azure, AWS, and GCP.",
+        knowsAbout: [
+          ".NET",
+          "Full-stack development",
+          "Cloud architecture",
+          "Microsoft Azure",
+          "Amazon Web Services",
+          "Google Cloud Platform",
+          "Software architecture",
+        ],
+      },
+    ],
+  };
+
   return (
     <main className="bg-[#f5f0f0] min-h-[calc(100vh-65px)] flex items-center">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+        }}
+      />
       <div className="max-w-6xl mx-auto w-full px-6 sm:px-10 lg:px-16 py-16 lg:py-24 flex flex-col-reverse md:flex-row items-center gap-12 md:gap-16">
 
         {/* Text Content — bottom on mobile, left on desktop */}
