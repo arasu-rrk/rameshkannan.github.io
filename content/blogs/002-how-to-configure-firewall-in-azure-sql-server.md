@@ -17,7 +17,7 @@ tags: ["firewall", "azure-sql-server", "azure-sql-database", "azure"]
 
 1. Sign in to the [Azure portal](https://portal.azure.com/) and open your SQL database or its logical server.
 2. From the database overview, select **Set server firewall**. Alternatively, from the logical server overview, select **Networking** under **Settings**.
-3. Under **Firewall rules**, add a rule for your client's public IP address. If the portal offers to add your current client IP, use that option; otherwise, enter it as both the start and end IP address.
+3. Set **Public network access** to **Selected networks**. Under **Firewall rules**, add a rule for your client's public IP address. If the portal offers to add your current client IP, use that option; otherwise, enter it as both the start and end IP address.
 4. To allow a specific range, enter its first and last public IP addresses as the start and end IP. Do not use loopback addresses such as `127.0.0.1`; they are not your internet-facing client IP.
 5. Select **Save**. Firewall changes can take several minutes to take effect.
 
