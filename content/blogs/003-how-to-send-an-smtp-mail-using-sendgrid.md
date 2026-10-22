@@ -4,7 +4,7 @@ date: "2019-12-15"
 excerpt: "Set up SendGrid's SMTP relay in minutes — create a restricted API key with mail send permissions and plug in the credentials."
 category: "Technical"
 author: "Ramesh Kannan"
-coverImage: "/images/003/sendgrid-smtp.png"
+coverImage: "/images/blog/003/sendgrid-smtp.png"
 tags: ["sendgrid", "smtp", "csharp"]
 ---
 

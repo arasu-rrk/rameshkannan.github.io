@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Geist, Geist_Mono, Bitter, Playfair_Display, Raleway } from "next/font/google";
 import Navbar from "@/components/Navbar";
+import { getImageUrl } from "@/lib/images";
 import "./globals.css";
 
 const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
+const profileImage = getImageUrl("/images/me/ramesh-kannan.jpeg");
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -54,7 +56,7 @@ export const metadata: Metadata = {
     siteName: "Ramesh Kannan",
     images: [
       {
-        url: "/images/me/ramesh-kannan.jpeg",
+        url: profileImage,
         alt: "Ramesh Kannan, senior software engineer",
       },
     ],
@@ -65,7 +67,7 @@ export const metadata: Metadata = {
     title: "Ramesh Kannan | Senior Software Engineer",
     description:
       "Senior software engineer specializing in .NET full-stack development, cloud architecture, and scalable systems.",
-    images: ["/images/me/ramesh-kannan.jpeg"],
+    images: [profileImage],
   },
 };
 
