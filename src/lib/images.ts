@@ -8,3 +8,5 @@ export function getImageUrl(src: string): string {
 
   return `${cdnUrl.replace(/\/+$/, '')}${path}`;
 }
+
+export const profileImageUrl = getImageUrl("/images/me/ramesh-kannan.jpeg");

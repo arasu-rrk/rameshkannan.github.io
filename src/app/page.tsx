@@ -1,9 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { getImageUrl } from "@/lib/images";
-
-const profileImage = getImageUrl("/images/me/ramesh-kannan.jpeg");
+import { profileImageUrl } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: { absolute: "Ramesh Kannan | Senior Software Engineer" },
@@ -17,7 +15,7 @@ export const metadata: Metadata = {
     siteName: "Ramesh Kannan",
     images: [
       {
-        url: profileImage,
+        url: profileImageUrl,
         alt: "Ramesh Kannan, senior software engineer",
       },
     ],
@@ -26,7 +24,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Ramesh Kannan | Senior Software Engineer",
     description: "Senior Software Engineer specializing in .NET, cloud architecture, and scalable systems.",
-    images: [profileImage],
+    images: [profileImageUrl],
   },
 };
 
@@ -46,7 +44,7 @@ export default function Home() {
         "@type": "Person",
         name: "Ramesh Kannan",
         url: "https://rameshkannan.com/",
-        image: getImageUrl("/images/me/ramesh-kannan.jpeg"),
+        image: profileImageUrl,
         jobTitle: "Senior Software Engineer",
         description:
           "Senior software engineer specializing in .NET full-stack development and cloud-native architectures on Azure, AWS, and GCP.",
@@ -112,7 +110,7 @@ export default function Home() {
         <div className="flex-shrink-0 flex justify-center">
           <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-white">
             <Image
-              src={profileImage}
+              src={profileImageUrl}
               alt="Ramesh Kannan"
               fill
               sizes="(min-width: 1024px) 24rem, (min-width: 768px) 20rem, (min-width: 640px) 18rem, 14rem"

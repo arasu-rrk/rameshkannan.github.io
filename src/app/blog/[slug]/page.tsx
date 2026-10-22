@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { getImageUrl } from '@/lib/images';
+import { getImageUrl, profileImageUrl } from '@/lib/images';
 
 const categoryColors: Record<string, { bg: string; text: string }> = {
   Technical: { bg: 'bg-blue-100', text: 'text-blue-700' },
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const blog = await getBlogBySlug(slug).catch(() => null);
   if (!blog) return {};
-  const image = getImageUrl(blog.coverImage || '/images/me/ramesh-kannan.jpeg');
+  const image = blog.coverImage ? getImageUrl(blog.coverImage) : profileImageUrl;
   const publishedTime = toIsoDateTime(blog.date);
   const modifiedTime = toIsoDateTime(blog.modifiedDate);
   return {
@@ -73,7 +73,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const colors = categoryColors[blog.category] ?? { bg: 'bg-gray-100', text: 'text-gray-700' };
   const gradient = categoryGradients[blog.category] ?? 'from-gray-400 to-gray-600';
   const image = new URL(
-    getImageUrl(blog.coverImage || '/images/me/ramesh-kannan.jpeg'),
+    blog.coverImage ? getImageUrl(blog.coverImage) : profileImageUrl,
     'https://rameshkannan.com',
   ).href;
   const publishedTime = toIsoDateTime(blog.date);

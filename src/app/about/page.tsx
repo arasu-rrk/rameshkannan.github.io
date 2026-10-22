@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getImageUrl } from "@/lib/images";
+import { profileImageUrl } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "About | Ramesh Kannan",
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description: "About Ramesh Kannan, Senior Software Engineer.",
     url: "/about",
     siteName: "Ramesh Kannan",
-    images: [getImageUrl("/images/me/ramesh-kannan.jpeg")],
+    images: [profileImageUrl],
   },
 };
 
