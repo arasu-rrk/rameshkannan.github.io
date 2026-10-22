@@ -147,7 +147,7 @@ Unstage a file without discarding its edits:
 git restore --staged {file_path}
 ```
 
-These commands discard uncommitted work, so check `git status` first. To preview untracked files and directories that Git would delete:
+Check `git status` first. `git restore {file_path}` discards unstaged tracked edits, while `git restore --staged {file_path}` preserves edits and only unstages the file. To preview untracked files and directories that Git would delete:
 
 ```bash
 git clean --dry-run -d
