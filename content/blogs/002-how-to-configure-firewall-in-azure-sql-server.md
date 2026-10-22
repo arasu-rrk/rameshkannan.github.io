@@ -1,37 +1,30 @@
 ---
 title: "How to configure firewall in Azure SQL Server"
 date: "2019-12-14"
-excerpt: "Learn how to allow your IP address or IP range through the Azure SQL Server firewall so you can connect from outside Azure."
+displayModifiedDate: "2026-10-23"
+excerpt: "Learn how to allow a trusted public IP address through the Azure SQL Database logical server firewall."
 category: "Cloud"
 author: "Ramesh Kannan"
 coverImage: "/images/blog/002/azure-sql-firewall.png"
 tags: ["firewall", "azure-sql-server", "azure-sql-database", "azure"]
 ---
 
-> **Originally published** on [arasu-rrk.com](https://arasu-rrk.com/blog/how-to-configure-firewall-in-azure-sql-server).
+> **Originally published** on [arasu-rrk.com](https://arasu-rrk.com/blog/how-to-configure-firewall-in-azure-sql-server). The steps below apply to Azure SQL Database, not Azure SQL Managed Instance.
 
-[Azure SQL Server](https://azure.microsoft.com/en-us/services/sql-database) is configured by default to connect to Azure Services alone. If you want to access the Azure SQL Server in your network you have to configure your IP address in Azure SQL Server Firewall.
+[Azure SQL Database](https://learn.microsoft.com/azure/azure-sql/database/) uses a logical server with a public endpoint. By default, its server-level firewall blocks connections to that endpoint. To connect from a computer on the internet, add that computer's public IP address as a firewall rule. A server-level rule allows the matching IP address to connect to **all databases on that logical server**.
 
-1. Go to <https://portal.azure.com>
+## Add your public IP address in the Azure portal
 
-2. Navigate to your Azure SQL Server
+1. Sign in to the [Azure portal](https://portal.azure.com/) and open your SQL database or its logical server.
+2. From the database overview, select **Set server firewall**. Alternatively, from the logical server overview, select **Networking** under **Settings**.
+3. Under **Firewall rules**, add a rule for your client's public IP address. If the portal offers to add your current client IP, use that option; otherwise, enter it as both the start and end IP address.
+4. To allow a specific range, enter its first and last public IP addresses as the start and end IP. Do not use loopback addresses such as `127.0.0.1`; they are not your internet-facing client IP.
+5. Select **Save**. Firewall changes can take several minutes to take effect.
 
-3. From the navigation menu, select **Firewalls and virtual networks**
+Use the narrowest IP range possible. Avoid allowing every IP address: that exposes the SQL public endpoint to connection attempts from anywhere, so access must rely on authentication and database permissions alone. For private connectivity, consider a [private endpoint](https://learn.microsoft.com/azure/azure-sql/database/private-endpoint-overview) instead of the public endpoint.
 
-4. Configure your IP address in the page
+## Allow connections from Azure services
 
-   a. Click **Add Client IP** option to allow your current IP address in the firewall.
+If you enable **Allow Azure services and resources to access this server**, Azure SQL adds a firewall rule that allows connections from Azure services across **all Azure subscriptions**, not just services in your subscription. This broad exception is off by default for new logical servers. Enable it only when required; for tighter network access, consider a [private endpoint](https://learn.microsoft.com/azure/azure-sql/database/private-endpoint-overview) or a [virtual network service endpoint](https://learn.microsoft.com/azure/azure-sql/database/vnet-service-endpoint-rule-overview).
 
-   b. Allow a particular IP address alone. For example `2.2.2.2`. In this case, Start IP and End IP will be the same.
-
-   c. You can allow an IP address range. For example `127.0.0.1 - 127.0.0.5`.
-
-   d. You can allow all IP addresses from `0.0.0.0 - 255.255.255.255`.
-      > **NOTE:**
-      > If you enter these from/to IP addresses, you can access the SQL Server from any IP address. But this is not preferable.
-
-   e. Enable the option **Allow Azure services and resources to access this server** to allow your services hosted in Azure.
-      > **NOTE:**
-      > This option enables access to all services and resources (not only your resources) that are hosted in Azure.
-
-5. Once you have configured IP addresses, click **Save** to save your changes.
+For more details and other ways to manage firewall rules, see Microsoft's [IP firewall rules for Azure SQL Database](https://learn.microsoft.com/azure/azure-sql/database/firewall-configure).
