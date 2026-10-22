@@ -35,6 +35,18 @@ Cloudflare Pages builds and deploys the site from the GitHub repository. Configu
 
 Configure `NEXT_PUBLIC_GTM_ID` in the Cloudflare Pages build environment for the required deployment targets, then redeploy after changing it.
 
+### Cloudflare R2 image publishing
+
+The `prebuild` script publishes `public/images` to the configured R2 bucket and removes stale images. For Cloudflare Pages builds, configure these build variables/secrets for each deployment environment:
+
+- `CLOUDFLARE_ACCOUNT_ID`
+- `CLOUDFLARE_R2_ACCESS_KEY_ID`
+- `CLOUDFLARE_R2_SECRET_ACCESS_KEY`
+- `CLOUDFLARE_R2_BUCKET`
+- `NEXT_PUBLIC_IMAGE_CDN_URL` (the public HTTPS base URL used to serve the images)
+
+Create an R2 API token with **Object Read & Write** access to the bucket named by `CLOUDFLARE_R2_BUCKET`. The script lists existing objects, uploads current images, and deletes stale ones, so a write-only token or a token scoped to a different bucket will fail with `AccessDenied` during the list step. Use the account ID for the same Cloudflare account as the bucket. After changing the token or variables in Pages, redeploy.
+
 ## Google Tag Manager
 
 In GTM, configure a Google tag with the GA4 measurement ID and leave automatic `page_view` sending enabled. In the GA4 web data stream's Enhanced Measurement settings, enable **Page changes based on browser history events** to track client-side navigation. Do not add a separate Custom Event tag for `page_view`, as it would duplicate the automatically collected events.

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "prebuild": "bash scripts/update-blog-modified-dates.sh",
+    "prebuild": "bash scripts/update-blog-modified-dates.sh && node scripts/publish-images-to-r2.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint ."
@@ -13,6 +13,7 @@
     "node": ">=22.14.0"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.840.0",
     "gray-matter": "npm:@11ty/gray-matter@^3.0.0",
     "next": "^16.4.1",
     "react": "^19.3.1",

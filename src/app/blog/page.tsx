@@ -1,5 +1,6 @@
 import { getAllBlogs } from '@/lib/blog';
 import BlogList from '@/components/BlogList';
+import { profileImageUrl } from '@/lib/images';
 
 export const metadata = {
   title: 'Engineering Blog',
@@ -11,13 +12,13 @@ export const metadata = {
     description: 'Articles on .NET, cloud platforms, software architecture, and engineering best practices.',
     url: '/blog',
     siteName: 'Ramesh Kannan',
-    images: ['/images/me/ramesh-kannan.jpeg'],
+    images: [profileImageUrl],
   },
   twitter: {
     card: 'summary_large_image' as const,
     title: 'Engineering Blog | Ramesh Kannan',
     description: 'Articles on .NET, cloud platforms, software architecture, and engineering best practices.',
-    images: ['/images/me/ramesh-kannan.jpeg'],
+    images: [profileImageUrl],
   },
 };
 
