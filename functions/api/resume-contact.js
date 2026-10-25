@@ -4,6 +4,7 @@ const contactEnvironmentVariables = {
   address: 'RESUME_ADDRESS',
 };
 
+/** Returns configured resume contact details without allowing them to be cached. */
 export async function onRequestGet({ env }) {
   const contacts = Object.fromEntries(
     Object.entries(contactEnvironmentVariables).map(([field, variableName]) => [

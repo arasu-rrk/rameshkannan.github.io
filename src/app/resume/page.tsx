@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/resume' },
 };
 
+/** Renders the resume at its canonical URL. */
 export default function ResumePage() {
   return <ResumeView />;
 }

@@ -10,6 +10,7 @@ const navLinks = [
   { href: '/blog', label: 'Blog' },
 ];
 
+/** Renders responsive site navigation with the current route highlighted. */
 export default function Navbar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);

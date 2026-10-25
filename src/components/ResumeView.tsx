@@ -3,6 +3,7 @@ import ResumeContact from '@/components/ResumeContact';
 import ResumePrintButton from '@/components/ResumePrintButton';
 import styles from '@/app/resume/resume.module.scss';
 
+/** Renders resume content from the shared resume data. */
 export default function ResumeView() {
   return (
     <main className={styles.page}>

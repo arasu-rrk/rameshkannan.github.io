@@ -11,6 +11,7 @@ const contactFields = [
 
 type ContactDetails = Record<(typeof contactFields)[number]['key'], string>;
 
+/** Checks that every contact field is present and contains non-empty text. */
 function isContactDetails(value: unknown): value is ContactDetails {
   return typeof value === 'object'
     && value !== null
@@ -26,11 +27,13 @@ declare global {
   }
 }
 
+/** Displays masked contact details and reveals them on request. */
 export default function ResumeContact() {
   const [contacts, setContacts] = useState<ContactDetails | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  /** Fetches contact details without caching and records a reveal event. */
   async function revealContacts() {
     setLoading(true);
     setError('');
