@@ -6,17 +6,65 @@ import remarkParse from 'remark-parse';
 import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
 import rehypeHighlight from 'rehype-highlight';
+import rehypeSanitize, { defaultSchema } from 'rehype-sanitize';
 import rehypeStringify from 'rehype-stringify';
+import type { Root, RootContent } from 'hast';
+import type { Options as SanitizeOptions } from 'rehype-sanitize';
 
 const blogsDirectory = path.join(process.cwd(), 'content/blogs');
 
-function addHeadingAnchors(html: string): string {
-  return html.replace(/<h([2-6])>(.*?)<\/h\1>/gi, (_, level, inner) => {
-    const text = inner.replace(/<[^>]+>/g, '');
-    const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').trim();
-    const anchor = `<a class="heading-anchor" href="#${id}" aria-label="Link to this section"></a>`;
-    return `<h${level} id="${id}">${inner}${anchor}</h${level}>`;
-  });
+const blogSanitizeSchema: SanitizeOptions = {
+  ...defaultSchema,
+  attributes: {
+    ...defaultSchema.attributes,
+    a: [
+      ...(defaultSchema.attributes?.a ?? []).filter(
+        (attribute) => typeof attribute === 'string' || attribute[0] !== 'className',
+      ),
+      ['className', 'data-footnote-backref', 'heading-anchor'],
+    ],
+    span: [['className', /^hljs-/]],
+  },
+};
+
+function textContent(node: RootContent): string {
+  if (node.type === 'text') return node.value;
+  if (node.type !== 'element') return '';
+  return node.children.map(textContent).join('');
+}
+
+function addHeadingAnchors() {
+  return (tree: Root) => {
+    function visit(nodes: RootContent[]) {
+      for (const node of nodes) {
+        if (node.type !== 'element') continue;
+
+        if (/^h[2-6]$/.test(node.tagName)) {
+          const id = textContent(node)
+            .toLowerCase()
+            .replace(/[^\w\s-]/g, '')
+            .replace(/\s+/g, '-')
+            .replace(/-+/g, '-')
+            .trim();
+          node.properties.id = id;
+          node.children.push({
+            type: 'element',
+            tagName: 'a',
+            properties: {
+              className: ['heading-anchor'],
+              href: `#user-content-${id}`,
+              ariaLabel: 'Link to this section',
+            },
+            children: [],
+          });
+        }
+
+        visit(node.children);
+      }
+    }
+
+    visit(tree.children);
+  };
 }
 
 export type Blog = {
@@ -82,10 +130,11 @@ export async function getBlogBySlug(slug: string): Promise<Blog> {
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkRehype)
+    .use(addHeadingAnchors)
     .use(rehypeHighlight)
+    .use(rehypeSanitize, blogSanitizeSchema)
     .use(rehypeStringify)
     .process(content);
-  const htmlContent = addHeadingAnchors(processedContent.toString());
 
   return {
     slug,
@@ -100,6 +149,6 @@ export async function getBlogBySlug(slug: string): Promise<Blog> {
     author: data.author as string,
     coverImage: data.coverImage as string,
     tags: (data.tags as string[]) ?? [],
-    content: htmlContent,
+    content: processedContent.toString(),
   };
 }

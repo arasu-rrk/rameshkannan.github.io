@@ -5,7 +5,7 @@ modifiedDate: "2026-10-18T23:23:38+01:00"
 excerpt: "Managing multiple .NET projects? This guide demonstrates how to centralize build settings and NuGet package versions using two powerful files, reducing duplication, simplifying upgrades, and strengthening dependency governance."
 category: ".NET"
 author: "Ramesh Kannan"
-coverImage: "/images/blog/005/dotnet-project-standard.png"
+coverImage: "/images/blog/005/dotnet-project-standard.webp"
 tags: [".net"]
 ---
 

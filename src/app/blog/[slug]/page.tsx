@@ -76,6 +76,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     blog.coverImage ? getImageUrl(blog.coverImage) : profileImageUrl,
     'https://rameshkannan.com',
   ).href;
+  const coverImageSrcSet = blog.coverImage.endsWith('.webp')
+    ? [480, 768, 1024]
+        .map((width) => `${getImageUrl(blog.coverImage.replace(/\.webp$/, `-${width}.webp`))} ${width}w`)
+        .join(', ')
+    : undefined;
   const publishedTime = toIsoDateTime(blog.date);
   const modifiedTime = toIsoDateTime(blog.modifiedDate);
   const structuredData = {
@@ -130,14 +135,24 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {/* Cover Image */}
         <div className="relative w-full aspect-video rounded-xl overflow-hidden mb-8 shadow-md">
           {blog.coverImage ? (
-            <Image
-              src={getImageUrl(blog.coverImage)}
-              alt={blog.title}
-              fill
-              unoptimized
-              className="object-cover"
-              priority
-            />
+            <picture>
+              {coverImageSrcSet && (
+                <source
+                  type="image/webp"
+                  srcSet={coverImageSrcSet}
+                  sizes="(max-width: 832px) calc(100vw - 4rem), 48rem"
+                />
+              )}
+              <Image
+                src={getImageUrl(blog.coverImage)}
+                alt={blog.title}
+                fill
+                unoptimized
+                className="object-cover"
+                loading="eager"
+                fetchPriority="high"
+              />
+            </picture>
           ) : (
             <div className={`w-full h-full bg-gradient-to-br ${gradient}`} />
           )}
@@ -149,13 +164,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             {blog.category}
           </span>
           <span className={`text-xs px-3 py-1 rounded-full bg-gray-100`}>
-          <time className="text-xs font-semibold text-gray-500" dateTime={blog.date}>
+          <time className="text-xs font-semibold text-gray-600" dateTime={blog.date}>
             Published: {formatDate(blog.date)}
           </time>
           </span>
           {blog.displayModifiedDate && (
                                         <span className={`text-xs px-3 py-1 rounded-full bg-gray-100`}>
-            <time className="text-xs font-semibold text-gray-500" dateTime={blog.displayModifiedDate}>
+            <time className="text-xs font-semibold text-gray-600" dateTime={blog.displayModifiedDate}>
               Last updated: {formatDate(blog.displayModifiedDate)}
             </time>
                                         </span>

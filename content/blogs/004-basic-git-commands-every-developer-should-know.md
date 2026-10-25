@@ -6,7 +6,7 @@ displayModifiedDate: "2026-10-23"
 excerpt: "A practical reference covering the essential Git commands for cloning, branching, staging, committing, pushing, and reverting changes."
 category: "Git"
 author: "Ramesh Kannan"
-coverImage: "/images/blog/004/basic-git-commands.png"
+coverImage: "/images/blog/004/basic-git-commands.webp"
 tags: ["git"]
 ---
 
