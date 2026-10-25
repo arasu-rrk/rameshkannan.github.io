@@ -1,0 +1,127 @@
+{
+  "name": "Ramesh Kannan Rajendran",
+  "title": "Senior Software Engineer",
+  "linkedin": {
+    "label": "linkedin.com/in/ramesh-kannan-rajendran",
+    "url": "https://www.linkedin.com/in/ramesh-kannan-rajendran"
+  },
+  "profile": "Senior Software Engineer with 13+ years of experience designing and building scalable, cloud-native distributed systems using .NET, Azure, and modern databases. Proven expertise in microservices architecture, legacy system modernization, and REST API development. Experienced in leading cross-functional engineering teams using Agile/Scrum methodologies, driving CI/CD adoption, and delivering SaaS products at scale. Demonstrated track record of reducing infrastructure costs, improving system performance, and aligning technical roadmaps with business objectives.",
+  "skills": [
+    {
+      "category": "Languages & Frameworks",
+      "items": "C#, .NET 10 (MVC), EF Core, GraphQL, gRPC, REST APIs, OAuth 2.0, OpenID Connect, xUnit, Power Automate, Stripe SDK, Webhooks, Azure AD"
+    },
+    {
+      "category": "Cloud & DevOps",
+      "items": "Microsoft Azure, AWS"
+    },
+    {
+      "category": "Databases",
+      "items": "MS SQL, PostgreSQL, MySQL, Redis, Elasticsearch"
+    },
+    {
+      "category": "Frontend",
+      "items": "JavaScript, AlpineJS, HTMX, Bootstrap, SCSS, jQuery, Syncfusion EJ2 Components"
+    },
+    {
+      "category": "Architecture Patterns",
+      "items": "Microservices, Multi-tenant SaaS, Identity & Access Management (IAM), Event-driven Architecture, CQRS"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Senior Software Engineer",
+      "company": "Chevron",
+      "dates": "Dec 2025 – Present",
+      "location": "Bengaluru, India",
+      "highlights": [
+        "Leveraged GitHub Copilot to accelerate development, reducing implementation effort by over 60%.",
+        "Implemented xUnit-based automated testing, integrated into the CI/CD pipeline, achieving 85% code coverage.",
+        "Led the migration of a legacy ASP.NET WebForms application to .NET 10, ensuring compliance with enterprise security policies and enabling zero-downtime deployments."
+      ]
+    },
+    {
+      "role": "Manager",
+      "company": "Ernst & Young LLP (Client: Chevron)",
+      "dates": "May 2025 – Dec 2025",
+      "location": "Bengaluru, India",
+      "highlights": [
+        "Deployed as a Senior Integration Engineer to support Chevron initiatives, contributing to application modernization and enterprise integration efforts."
+      ]
+    },
+    {
+      "role": "Engineering Manager",
+      "company": "Syncfusion Software Private Limited",
+      "dates": "Jun 2021 – May 2025",
+      "location": "Chennai, India",
+      "highlights": [
+        "Architected and led migration of .NET Framework applications to ASP.NET Core 3.1, enabling containerization via Docker and Kubernetes on Linux; subsequently upgraded to .NET 6.",
+        "Drove backend database migration from MS SQL to PostgreSQL across production SaaS environment, reducing database licensing and operational costs by 40%."
+      ]
+    },
+    {
+      "role": "Tech Lead",
+      "company": "Syncfusion Software Private Limited",
+      "dates": "Jul 2019 – May 2021",
+      "location": "Chennai, India",
+      "highlights": [
+        "Designed and implemented multi-tenant SaaS architecture, transforming a single-tenant system to support 500+ tenants with isolated databases and dedicated storage per tenant.",
+        "Built automated tenant provisioning and lifecycle management system using ASP.NET Core REST APIs.",
+        "Integrated Stripe payment gateway for subscription billing, handling recurring payments, proration, and webhook-driven lifecycle events for thousands of active subscribers."
+      ]
+    },
+    {
+      "role": "Senior Software Engineer",
+      "company": "Syncfusion Software Private Limited",
+      "dates": "Jun 2015 – Jul 2019",
+      "location": "Chennai, India",
+      "highlights": [
+        "Developed an in-house Identity Provider Server supporting SSO across Dashboard Server and Report Server using OAuth 2.0 and OpenID Connect protocols.",
+        "Led redesign and revamp of the Dashboard UI in collaboration with UX designers, resulting in a measurable improvement in user satisfaction scores and onboarding time.",
+        "Streamlined documentation release pipeline using Git Flow, cutting release turnaround time by ~40% and reducing errors in the publishing process."
+      ]
+    },
+    {
+      "role": "Software Engineer",
+      "company": "Syncfusion Software Private Limited",
+      "dates": "Nov 2012 – Jun 2015",
+      "location": "Chennai, India",
+      "highlights": [
+        "Optimized support ticket creation workflow by implementing persistent user preference storage using MS SQL, to reduce average ticket submission time.",
+        "Redesigned download page UI using LESS, and jQuery for Syncfusion.com, improving page load performance by ~30%."
+      ]
+    }
+  ],
+  "education": {
+    "degree": "Bachelor of Engineering in Computer Science",
+    "institution": "Mohamed Sathak Engineering College",
+    "dates": "2008 – 2012",
+    "location": "Ramanathapuram, India"
+  },
+  "projects": [
+    {
+      "name": "Health & Medical",
+      "dates": "May 2025 – Present",
+      "description": "Architected and delivered a cloud-based global compliance platform using .NET 10, Azure SQL, and Power Automate, enabling organizations across 10+ countries to conduct randomized drug and alcohol testing with full regulatory compliance, audit traceability, and HIPAA-aligned secure medical data handling.",
+      "technologies": ".NET 10, GitHub Copilot, Azure SQL, AlpineJS, Power Automate, CSpell"
+    },
+    {
+      "name": "Bold ID",
+      "dates": "2021 – 2025",
+      "description": "Built Bold ID IAM platform using OAuth 2.0 and OpenID Connect to centralize authentication and role-based access control (RBAC) across 3+ enterprise products. Designed tenant-scoped permission management system supporting MS SQL, PostgreSQL, and MySQL backends across cloud and on-premise deployments for 1000+ users.",
+      "technologies": "OAuth 2.0, OpenID Connect, .NET 6, MS SQL, PostgreSQL, MySQL, Nginx, SCSS, jQuery"
+    },
+    {
+      "name": "Tenant and Subscription Management",
+      "dates": "2020 – 2021",
+      "description": "Architected and built an internal REST API platform to manage tenant provisioning and subscription lifecycle across 5+ business websites and intranet portals. Integrated Stripe for recurring billing, proration, and webhook-driven subscription event handling. Leveraged Azure SQL and Azure Blob Storage alongside Amazon S3 and Amazon SES to support asset management and transactional email delivery for active customers.",
+      "technologies": "Stripe, ASP.NET Core 3.1, Azure SQL Database, Azure Blob Storage, Amazon S3, Amazon SES, Webhooks, Azure App Service"
+    },
+    {
+      "name": "Bold BI",
+      "dates": "2015 – 2019",
+      "description": "Led engineering for Bold BI (formerly Syncfusion Dashboard Platform), a multi-tenant enterprise SaaS application for creating, managing, and embedding interactive dashboards — supporting both cloud and on-premise deployments. Built core platform features using ASP.NET MVC, MS SQL, and PostgreSQL, integrated Azure Active Directory for enterprise SSO, and deployed across Azure App Service and IIS for 100+ enterprise customers across cloud and on-premise environments.",
+      "technologies": "ASP.NET MVC, MS SQL, PostgreSQL, MySQL, IIS, Azure App Service, Azure AD"
+    }
+  ]
+}

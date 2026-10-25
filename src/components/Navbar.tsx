@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 const navLinks = [
   { href: '/', label: 'Home' },
+  { href: '/resume', label: 'Resume' },
   { href: '/blog', label: 'Blog' },
 ];
 
@@ -14,7 +15,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-white border-b border-gray-200 px-6 py-4 sticky top-0 z-50">
+    <nav className="print:hidden bg-white border-b border-gray-200 px-6 py-4 sticky top-0 z-50">
       <div className="max-w-5xl mx-auto flex items-center justify-between">
         <Link href="/" className="text-lg font-bold text-gray-900 tracking-tight">
           RRK

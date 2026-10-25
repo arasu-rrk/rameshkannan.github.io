@@ -1,0 +1,90 @@
+'use client';
+
+import { useState } from 'react';
+import styles from '@/app/resume/resume.module.scss';
+
+const contactFields = [
+  { key: 'email', label: 'Email', placeholder: '••••••••••••' },
+  { key: 'phone', label: 'Phone', placeholder: '••••••••••••' },
+  { key: 'address', label: 'Address', placeholder: '••••••••••••' },
+] as const;
+
+type ContactDetails = Record<(typeof contactFields)[number]['key'], string>;
+
+function isContactDetails(value: unknown): value is ContactDetails {
+  return typeof value === 'object'
+    && value !== null
+    && contactFields.every(({ key }) => {
+      const fieldValue = (value as Record<string, unknown>)[key];
+      return typeof fieldValue === 'string' && fieldValue.trim().length > 0;
+    });
+}
+
+declare global {
+  interface Window {
+    dataLayer?: Array<Record<string, unknown>>;
+  }
+}
+
+export default function ResumeContact() {
+  const [contacts, setContacts] = useState<ContactDetails | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  async function revealContacts() {
+    setLoading(true);
+    setError('');
+
+    try {
+      const response = await fetch('/api/resume-contact', { cache: 'no-store' });
+      if (!response.ok) {
+        throw new Error(response.status === 503
+          ? 'Contact details are not fully configured.'
+          : 'Contact details could not be loaded. Please try again.');
+      }
+
+      const result: { contacts?: unknown } = await response.json();
+      if (!isContactDetails(result.contacts)) {
+        throw new Error('Contact details could not be loaded. Please try again.');
+      }
+
+      setContacts(result.contacts);
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'resume_contact_revealed',
+        contact_type: 'all',
+      });
+    } catch (requestError) {
+      setError(requestError instanceof Error ? requestError.message : 'Contact details could not be loaded. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div className={styles.contact}>
+      <div className={styles.contactDetails}>
+        {contactFields.map(({ key, label, placeholder }, index) => (
+          <span className={styles.contactItem} key={key}>
+            {index > 0 && <span aria-hidden="true" className={styles.separator}>|</span>}
+            <span>
+              <span className={styles.contactLabel}>{label}: </span>
+              {contacts?.[key] ?? <span aria-label={`${label} hidden`}>{placeholder}</span>}
+            </span>
+          </span>
+        ))}
+      </div>
+      {!contacts && (
+        <button
+          type="button"
+          onClick={revealContacts}
+          disabled={loading}
+          aria-label="Reveal email, phone, and address"
+        >
+          {loading ? 'Loading…' : 'Show contact details'}
+        </button>
+      )}
+      {error && <p className={styles.contactError} role="status">{error}</p>}
+    </div>
+  );
+}

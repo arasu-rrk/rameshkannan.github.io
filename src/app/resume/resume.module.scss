@@ -1,0 +1,263 @@
+.page {
+  min-height: calc(100vh - 65px);
+  padding: 2rem 1rem 4rem;
+  background: #f3f4f6;
+  color: #111;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.resume {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 5vw, 3rem);
+  background: #fff;
+  box-shadow: 0 8px 30px rgb(17 24 39 / 8%);
+  font-size: 1rem;
+  line-height: 1.4;
+
+  p {
+    margin: 0;
+  }
+}
+
+.printControls {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 40;
+}
+
+.printButton {
+  padding: 0.55rem 0.9rem;
+  border: 1px solid #111;
+  border-radius: 0.35rem;
+  background: #fff;
+  color: #111;
+  font: 600 0.9rem Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+
+  &:hover {
+    border-color: #2563eb;
+    background: #2563eb;
+    color: #fff;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+  }
+}
+
+.header {
+  margin-bottom: 1.9rem;
+}
+
+.nameLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
+
+  h1 {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 2.55rem);
+    line-height: 1.12;
+    font-weight: 700;
+  }
+}
+
+.title {
+  font-size: clamp(1.15rem, 3vw, 1.5rem);
+}
+
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.2rem 0.75rem;
+  margin-top: 1rem;
+}
+
+.contactDetails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.75rem;
+}
+
+.contactItem {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.contactLabel {
+  font-weight: 700;
+}
+
+.separator {
+  color: #555;
+}
+
+.contact button {
+  padding: 0.2rem 0.55rem;
+  border: 1px solid #111;
+  border-radius: 0.25rem;
+  background: #fff;
+  color: #111;
+  font: inherit;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+
+  &:hover:not(:disabled) {
+    border-color: #2563eb;
+    background: #2563eb;
+    color: #fff;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    color: #555;
+    cursor: wait;
+  }
+}
+
+.contactError {
+  flex-basis: 100%;
+  color: #9b1c1c;
+  font-size: 0.9rem;
+}
+
+.linkedin {
+  display: inline-block;
+  margin-top: 0.35rem;
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+}
+
+.section {
+  margin-top: 1.45rem;
+
+  > h2 {
+    margin: 0 0 0.65rem;
+    padding-bottom: 0.18rem;
+    border-bottom: 2px solid #111;
+    font-size: 1.35rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+}
+
+.skills,
+.entry ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+
+  li {
+    position: relative;
+    padding-left: 1.25rem;
+
+    &::before {
+      position: absolute;
+      left: 0;
+      content: "•";
+    }
+  }
+}
+
+.entries {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.entryHeading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.1rem 1rem;
+
+  h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+
+  > p {
+    text-align: right;
+  }
+}
+
+.organization {
+  font-style: italic;
+}
+
+.entry > p:not(.organization) {
+  margin-top: 0.3rem;
+}
+
+.technologies {
+  font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+  .printControls {
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .page {
+    padding: 0;
+  }
+
+  .resume {
+    padding: 1.5rem 1.1rem 2.5rem;
+    box-shadow: none;
+    font-size: 0.95rem;
+  }
+
+  .entryHeading {
+    display: block;
+
+    > p {
+      text-align: left;
+    }
+  }
+}
+
+@media print {
+  .printControls {
+    display: none;
+  }
+
+  .page {
+    min-height: 0;
+    padding: 0;
+    background: #fff;
+  }
+
+  .resume {
+    max-width: none;
+    padding: 0;
+    box-shadow: none;
+    font-size: 10pt;
+  }
+
+  .entry {
+    break-inside: avoid;
+  }
+
+  .contact button {
+    text-decoration: none;
+  }
+}
