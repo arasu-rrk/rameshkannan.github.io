@@ -7,6 +7,7 @@
     "prebuild": "bash scripts/update-blog-modified-dates.sh && node scripts/publish-images-to-r2.mjs",
     "build": "next build",
     "start": "next start",
+    "preview": "wrangler pages dev out",
     "lint": "eslint ."
   },
   "engines": {
@@ -35,6 +36,7 @@
     "sass": "^1.105.1",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.71.2"
+    "typescript-eslint": "^8.71.2",
+    "wrangler": "^4.152.0"
   }
 }

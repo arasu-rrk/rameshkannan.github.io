@@ -5,6 +5,7 @@ const siteUrl = 'https://rameshkannan.com';
 
 export const dynamic = 'force-static';
 
+/** Builds the sitemap entries for the site and published blog posts. */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogs = await getAllBlogs();
 
@@ -16,6 +17,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     {
       url: `${siteUrl}/blog`,
       priority: 0.9,
+    },
+    {
+      url: `${siteUrl}/resume`,
+      priority: 0.8,
     },
     ...blogs.map((blog) => ({
       url: `${siteUrl}/blog/${blog.slug}`,
