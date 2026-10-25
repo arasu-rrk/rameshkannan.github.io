@@ -10,6 +10,7 @@ const contactFields = [
 ] as const;
 
 type ContactDetails = Record<(typeof contactFields)[number]['key'], string>;
+const retryMessage = 'Contact details could not be loaded. Please try again.';
 
 /** Checks that every contact field is present and contains non-empty text. */
 function isContactDetails(value: unknown): value is ContactDetails {
@@ -41,14 +42,16 @@ export default function ResumeContact() {
     try {
       const response = await fetch('/api/resume-contact', { cache: 'no-store' });
       if (!response.ok) {
-        throw new Error(response.status === 503
+        setError(response.status === 503
           ? 'Contact details are not fully configured.'
-          : 'Contact details could not be loaded. Please try again.');
+          : retryMessage);
+        return;
       }
 
       const result: { contacts?: unknown } = await response.json();
       if (!isContactDetails(result.contacts)) {
-        throw new Error('Contact details could not be loaded. Please try again.');
+        setError(retryMessage);
+        return;
       }
 
       setContacts(result.contacts);
@@ -57,8 +60,8 @@ export default function ResumeContact() {
         event: 'resume_contact_revealed',
         contact_type: 'all',
       });
-    } catch (requestError) {
-      setError(requestError instanceof Error ? requestError.message : 'Contact details could not be loaded. Please try again.');
+    } catch {
+      setError(retryMessage);
     } finally {
       setLoading(false);
     }
