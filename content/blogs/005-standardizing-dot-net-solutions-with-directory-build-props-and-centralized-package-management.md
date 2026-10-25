@@ -1,7 +1,7 @@
 ---
 title: "Standardizing .NET Solutions with Directory.Build.props and Centralized Package Management"
 date: "2026-03-03"
-modifiedDate: "2026-10-25T19:17:13+00:00"
+modifiedDate: "2026-10-25T19:39:02+00:00"
 excerpt: "Managing multiple .NET projects? This guide demonstrates how to centralize build settings and NuGet package versions using two powerful files, reducing duplication, simplifying upgrades, and strengthening dependency governance."
 category: ".NET"
 author: "Ramesh Kannan"

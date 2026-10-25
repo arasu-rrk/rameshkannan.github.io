@@ -4,9 +4,9 @@ import { useState } from 'react';
 import styles from '@/app/resume/resume.module.scss';
 
 const contactFields = [
-  { key: 'email', label: 'Email', placeholder: '••••••••••••' },
-  { key: 'phone', label: 'Phone', placeholder: '••••••••••••' },
-  { key: 'address', label: 'Address', placeholder: '••••••••••••' },
+  { key: 'email', label: 'Email', placeholder: '••••@••••.com' },
+  { key: 'phone', label: 'Phone', placeholder: '+91-xxxxxxxxxx' },
+  { key: 'address', label: 'Address', placeholder: '•••••, India' },
 ] as const;
 
 type ContactDetails = Record<(typeof contactFields)[number]['key'], string>;
@@ -68,7 +68,6 @@ export default function ResumeContact() {
           <span className={styles.contactItem} key={key}>
             {index > 0 && <span aria-hidden="true" className={styles.separator}>|</span>}
             <span>
-              <span className={styles.contactLabel}>{label}: </span>
               {contacts?.[key] ?? <span aria-label={`${label} hidden`}>{placeholder}</span>}
             </span>
           </span>
