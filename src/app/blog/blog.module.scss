@@ -77,6 +77,11 @@
   }
 }
 
+.blog :global(.blog-content) a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
 .blog ul,
 .blog ol {
   margin: 0.75rem 0 0.75rem 1.5rem;
