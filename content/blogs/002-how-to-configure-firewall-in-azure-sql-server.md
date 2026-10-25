@@ -5,7 +5,7 @@ displayModifiedDate: "2026-10-23"
 excerpt: "Learn how to allow a trusted public IP address through the Azure SQL Database logical server firewall."
 category: "Cloud"
 author: "Ramesh Kannan"
-coverImage: "/images/blog/002/azure-sql-firewall.png"
+coverImage: "/images/blog/002/azure-sql-firewall.webp"
 tags: ["firewall", "azure-sql-server", "azure-sql-database", "azure"]
 ---
 

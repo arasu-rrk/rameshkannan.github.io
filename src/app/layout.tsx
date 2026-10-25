@@ -1,32 +1,22 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Geist, Geist_Mono, Bitter, Playfair_Display, Raleway } from "next/font/google";
+import { Bitter, Playfair_Display, Raleway } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import { profileImageUrl } from "@/lib/images";
 import "./globals.css";
 
 const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 const bitter = Bitter({
   variable: "--font-bitter",
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["700"],
 });
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
-  weight: ["400", "700", "900"],
+  weight: ["700"],
 });
 
 const raleway = Raleway({
@@ -77,7 +67,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${bitter.variable} ${playfairDisplay.variable} ${raleway.variable} antialiased`}>
+      <body className={`${bitter.variable} ${playfairDisplay.variable} ${raleway.variable} antialiased`}>
         {gtmId && (
           <>
             <Script
