@@ -7,7 +7,7 @@ excerpt: "Configure SendGrid SMTP email delivery: create a restricted API key, s
 category: "Technical"
 author: "Ramesh Kannan"
 coverImage: "/images/blog/003/sendgrid-smtp.webp"
-tags: ["sendgrid", "SendGrid SMTP", "SMTP"]
+tags: ["sendgrid", "SendGrid SMTP", "SMTP", "SendGrid SMTP integration", "SendGrid SMTP server"]
 ---
 
 > **Originally published** on [arasu-rrk.com](https://arasu-rrk.com/blog/how-to-send-an-smtp-mail-using-sendgrid).
