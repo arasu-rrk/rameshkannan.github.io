@@ -1,11 +1,13 @@
 ---
-title: "How to send an SMTP mail using SendGrid"
+title: "How to Send Email Using SendGrid SMTP"
 date: "2019-12-15"
-excerpt: "Set up SendGrid's SMTP relay in minutes — create a restricted API key with mail send permissions and plug in the credentials."
+modifiedDate: "2026-10-28T00:26:59+00:00"
+displayModifiedDate: "2026-10-27"
+excerpt: "Configure SendGrid SMTP email delivery: create a restricted API key, set the SMTP host and port, and connect your application to SendGrid's transactional email relay."
 category: "Technical"
 author: "Ramesh Kannan"
 coverImage: "/images/blog/003/sendgrid-smtp.webp"
-tags: ["sendgrid", "smtp", "csharp"]
+tags: ["sendgrid", "SendGrid SMTP", "SMTP"]
 ---
 
 > **Originally published** on [arasu-rrk.com](https://arasu-rrk.com/blog/how-to-send-an-smtp-mail-using-sendgrid).
@@ -31,8 +33,12 @@ tags: ["sendgrid", "smtp", "csharp"]
 | Username | `apikey` (Yes, **apikey** is the username for all accounts) |
 | Password | API key generated in the above steps                      |
 
-## Code Sample
+## Code Samples
 
-A sample C# application is available at:
+- [.NET](https://github.com/arasu-rrk/sendgrid-smtp-client/tree/master/src/dotnet)
+- [Python](https://github.com/arasu-rrk/sendgrid-smtp-client/tree/master/src/python)
 
-<https://github.com/arasu-rrk/sendgrid-smtp-client>
+## SendGrid Documentation
+
+- [Send email with SMTP](https://www.twilio.com/docs/sendgrid/for-developers/sending-email/getting-started-smtp)
+- [Create and manage API keys](https://www.twilio.com/docs/sendgrid/ui/account-and-settings/api-keys)

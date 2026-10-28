@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import styles from '@/app/resume/resume.module.scss';
+import { ANALYTICS_EVENTS } from '@/lib/analytics-events';
 
 const contactFields = [
   { key: 'email', label: 'Email', placeholder: '••••@••••.com' },
@@ -57,7 +58,7 @@ export default function ResumeContact() {
       setContacts(result.contacts);
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
-        event: 'resume_contact_revealed',
+        event: ANALYTICS_EVENTS.RESUME_CONTACT_REVEALED,
         contact_type: 'all',
       });
     } catch {

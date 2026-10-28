@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getImageUrl, profileImageUrl } from '@/lib/images';
+import { siteUrl } from '@/lib/site';
 
 const categoryColors: Record<string, { bg: string; text: string }> = {
   Technical: { bg: 'bg-blue-100', text: 'text-blue-700' },
@@ -74,7 +75,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const gradient = categoryGradients[blog.category] ?? 'from-gray-400 to-gray-600';
   const image = new URL(
     blog.coverImage ? getImageUrl(blog.coverImage) : profileImageUrl,
-    'https://rameshkannan.com',
+    siteUrl,
   ).href;
   const coverImageSrcSet = blog.coverImage.endsWith('.webp')
     ? [480, 768, 1024]
@@ -83,28 +84,42 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     : undefined;
   const publishedTime = toIsoDateTime(blog.date);
   const modifiedTime = toIsoDateTime(blog.modifiedDate);
+  const articleUrl = `${siteUrl}/blog/${blog.slug}`;
+  const authorUrl = `${siteUrl}/#person`;
   const structuredData = {
     '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: blog.title,
-    description: blog.excerpt,
-    image,
-    datePublished: publishedTime,
-    dateModified: modifiedTime,
-    author: {
-      '@type': 'Person',
-      name: blog.author,
-      url: 'https://rameshkannan.com/',
-    },
-    mainEntityOfPage: `https://rameshkannan.com/blog/${blog.slug}`,
-  };
-  const breadcrumbData = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://rameshkannan.com/' },
-      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://rameshkannan.com/blog' },
-      { '@type': 'ListItem', position: 3, name: blog.title, item: `https://rameshkannan.com/blog/${blog.slug}` },
+    '@graph': [
+      {
+        '@type': 'BlogPosting',
+        '@id': `${articleUrl}#blogposting`,
+        url: articleUrl,
+        headline: blog.title,
+        description: blog.excerpt,
+        image,
+        datePublished: publishedTime,
+        dateModified: modifiedTime,
+        author: { '@id': authorUrl },
+        publisher: { '@id': authorUrl },
+        mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
+        articleSection: blog.category,
+        keywords: blog.tags,
+        inLanguage: 'en',
+      },
+      {
+        '@type': 'Person',
+        '@id': authorUrl,
+        name: blog.author,
+        url: `${siteUrl}/`,
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${articleUrl}#breadcrumb`,
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: `${siteUrl}/blog` },
+          { '@type': 'ListItem', position: 3, name: blog.title, item: articleUrl },
+        ],
+      },
     ],
   };
 
@@ -114,12 +129,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(structuredData).replace(/</g, '\\u003c'),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbData).replace(/</g, '\\u003c'),
         }}
       />
       <div className="max-w-4xl mx-auto">
@@ -178,7 +187,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight mb-4" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>
+        <h1 className="text-3xl sm:text-4xl font-bold font-playfair text-gray-900 leading-tight mb-4">
           {blog.title}
         </h1>
 

@@ -1,7 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { getAllBlogs } from '@/lib/blog';
-
-const siteUrl = 'https://rameshkannan.com';
+import { siteUrl } from '@/lib/site';
 
 export const dynamic = 'force-static';
 

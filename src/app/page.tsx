@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getImageUrl, profileImageUrl } from "@/lib/images";
+import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: { absolute: "Ramesh Kannan | Senior Software Engineer" },
@@ -34,17 +35,19 @@ export default function Home() {
     "@graph": [
       {
         "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
         name: "Ramesh Kannan",
-        url: "https://rameshkannan.com/",
+        url: `${siteUrl}/`,
         description:
           "Professional profile and engineering articles by Ramesh Kannan.",
         inLanguage: "en",
       },
       {
         "@type": "Person",
+        "@id": `${siteUrl}/#person`,
         name: "Ramesh Kannan",
-        url: "https://rameshkannan.com/",
-        image: profileImageUrl,
+        url: `${siteUrl}/`,
+        image: new URL(profileImageUrl, siteUrl).href,
         jobTitle: "Senior Software Engineer",
         description:
           "Senior software engineer specializing in .NET full-stack development and cloud-native architectures on Azure, AWS, and GCP.",
@@ -62,7 +65,7 @@ export default function Home() {
   };
 
   return (
-    <main className="bg-[#f5f0f0] min-h-[calc(100vh-65px)] flex items-center">
+    <main className="bg-home-surface min-h-[calc(100vh-65px)] flex items-center">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -76,10 +79,7 @@ export default function Home() {
           <span className="text-sm font-semibold tracking-widest uppercase text-gray-600">
             Hello, I&apos;m
           </span>
-          <h1
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight"
-            style={{ color: '#100f3a', fontFamily: 'var(--font-bitter), serif' }}
-          >
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight text-brand font-heading">
             Ramesh Kannan
           </h1>
           <p className="text-lg text-gray-600 font-medium">
@@ -93,13 +93,13 @@ export default function Home() {
           <div className="flex flex-wrap gap-3 justify-center md:justify-start mt-2">
             <Link
               href="/blog"
-              className="px-6 py-2.5 rounded-lg text-sm font-semibold text-white transition-colors bg-[#100f3a] hover:bg-[#1e1c5e]"
+              className="px-6 py-2.5 rounded-lg text-sm font-semibold text-white transition-colors bg-brand hover:bg-brand-hover"
             >
               Read Blog
             </Link>
             {/* <a
               href="/about"
-              className="px-6 py-2.5 rounded-lg text-sm font-semibold transition-colors border-2 border-[#100f3a] text-[#100f3a] hover:bg-[#100f3a] hover:text-white"
+              className="px-6 py-2.5 rounded-lg text-sm font-semibold transition-colors border-2 border-brand text-brand hover:bg-brand hover:text-white"
             >
               About Me
             </a> */}
