@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Bitter, Playfair_Display, Raleway } from "next/font/google";
+import ExternalLinkTracker from "@/components/ExternalLinkTracker";
 import Navbar from "@/components/Navbar";
 import { profileImageUrl } from "@/lib/images";
+import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
@@ -32,7 +34,7 @@ export const metadata: Metadata = {
   },
   description:
     "Ramesh Kannan is a senior software engineer specializing in .NET full-stack development, cloud architecture, and scalable systems on Azure, AWS, and GCP.",
-  metadataBase: new URL("https://rameshkannan.com"),
+  metadataBase: new URL(siteUrl),
   applicationName: "Ramesh Kannan",
   creator: "Ramesh Kannan",
   publisher: "Ramesh Kannan",
@@ -92,6 +94,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </noscript>
           </>
         )}
+        <ExternalLinkTracker />
         <Navbar />
         {children}
       </body>

@@ -15,7 +15,7 @@ export default function ResumeView() {
             <p className={styles.title}>{resume.title}</p>
           </div>
           <ResumeContact />
-          <a className={styles.linkedin} href={resume.linkedin.url} target="_blank" rel="noreferrer">
+          <a className={styles.linkedin} href={resume.linkedin.url} target="_blank" rel="noopener noreferrer">
             {resume.linkedin.label}
           </a>
         </header>

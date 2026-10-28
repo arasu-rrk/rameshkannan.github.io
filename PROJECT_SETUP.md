@@ -69,3 +69,5 @@ Create an R2 API token with **Object Read & Write** access to the bucket named b
 ## Google Tag Manager
 
 In GTM, configure a Google tag with the GA4 measurement ID and leave automatic `page_view` sending enabled. In the GA4 web data stream's Enhanced Measurement settings, enable **Page changes based on browser history events** to track client-side navigation. Do not add a separate Custom Event tag for `page_view`, as it would duplicate the automatically collected events.
+
+External HTTP(S) links across the app open in a new tab. Clicking a non-GitHub link pushes an `external_link_click` event with `domain` and `target_url`. A GitHub link instead pushes only a `github_repo_visit` event with `domain` and `repository`. Configure matching GTM Custom Event triggers and GA4 Event tags; register `repository` as a GA4 custom dimension to report repository visits individually.

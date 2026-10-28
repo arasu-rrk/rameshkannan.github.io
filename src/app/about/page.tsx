@@ -41,7 +41,7 @@ export default function About() {
         </p>
         <Link
           href="/blog"
-          className="inline-flex rounded-lg bg-[#100f3a] px-5 py-3 font-semibold text-white transition-colors hover:bg-[#1e1c5e]"
+          className="inline-flex rounded-lg bg-brand px-5 py-3 font-semibold text-white transition-colors hover:bg-brand-hover"
         >
           Browse the engineering blog
         </Link>

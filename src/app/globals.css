@@ -1,8 +1,43 @@
 @import "tailwindcss";
 
+/* App-specific tokens live here; Tailwind's standard palette remains unmodified. */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --brand: #100f3a;
+  --brand-hover: #1e1c5e;
+  --home-surface: #f5f0f0;
+  --code-surface: #3d3d3d;
+  --resume-ink: #111111;
+  --resume-muted: #555555;
+  --resume-error: #9b1c1c;
+  --resume-shadow: rgb(17 24 39 / 8%);
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  --font-size-6xl: 3.75rem;
+  --font-size-7xl: 4.5rem;
+  --font-size-blog: 16px;
+  --font-size-code: 14px;
+  --font-size-heading-anchor: 0.85em;
+  --font-size-resume-name: clamp(2rem, 5vw, 2.55rem);
+  --font-size-resume-title: clamp(1.15rem, 3vw, 1.5rem);
+  --font-size-resume-section: 1.35rem;
+  --font-size-resume-role: 1.05rem;
+  --font-size-resume-compact: 0.95rem;
+  --font-size-resume-small: 0.9rem;
+  --font-size-print: 10pt;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
 }
 
 html {
@@ -12,13 +47,39 @@ html {
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-raleway);
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-home-surface: var(--home-surface);
+  --font-sans: var(--font-body-family);
+  --font-mono: var(--font-monospace);
+  --font-heading: var(--font-heading-family);
+  --font-display: var(--font-display-family);
+  --text-xs: var(--font-size-xs);
+  --text-sm: var(--font-size-sm);
+  --text-base: var(--font-size-base);
+  --text-lg: var(--font-size-lg);
+  --text-xl: var(--font-size-xl);
+  --text-2xl: var(--font-size-2xl);
+  --text-3xl: var(--font-size-3xl);
+  --text-4xl: var(--font-size-4xl);
+  --text-5xl: var(--font-size-5xl);
+  --text-6xl: var(--font-size-6xl);
+  --text-7xl: var(--font-size-7xl);
+  --font-weight-normal: var(--weight-regular);
+  --font-weight-medium: var(--weight-medium);
+  --font-weight-semibold: var(--weight-semibold);
+  --font-weight-bold: var(--weight-bold);
 }
 
 body {
+  --font-body-family: var(--font-raleway), sans-serif;
+  --font-heading-family: var(--font-bitter), serif;
+  --font-display-family: var(--font-playfair), Georgia, serif;
+  --font-ui-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --font-resume-family: Georgia, "Times New Roman", serif;
+  --font-monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   color: var(--foreground);
-  font-family: var(--font-raleway), sans-serif;
+  font-family: var(--font-body-family);
 }
 
 a {
@@ -30,25 +91,25 @@ a:hover {
 }
 
 h1, h2 {
-  font-family: var(--font-bitter), serif;
+  font-family: var(--font-heading-family);
 }
 
 .font-playfair {
-  font-family: var(--font-playfair), Georgia, serif;
+  font-family: var(--font-display-family);
 }
 
 .font-segoe-ui {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--font-ui-family);
 }
 
 .blog-content blockquote {
-  border-left: 3px solid #100f3a;
-  background-color: #f5f0f0;
+  border-left: 3px solid var(--brand);
+  background-color: var(--home-surface);
   padding: 0.75rem 1rem;
   margin: 1.5rem 0;
   border-radius: 0 0.375rem 0.375rem 0;
-  color: #374151;
-  font-size: 0.9rem;
+  color: var(--color-gray-700);
+  font-size: var(--font-size-resume-small);
 }
 
 .blog-content blockquote p {
@@ -59,29 +120,29 @@ h1, h2 {
   width: 100%;
   border-collapse: collapse;
   margin: 1.5rem 0;
-  font-size: 0.9rem;
+  font-size: var(--font-size-resume-small);
   overflow-x: auto;
   display: block;
 }
 
 .blog-content thead tr {
-  background-color: #f3f4f6;
+  background-color: var(--color-gray-100);
   text-align: left;
 }
 
 .blog-content th,
 .blog-content td {
   padding: 0.65rem 1rem;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--color-gray-200);
   vertical-align: top;
 }
 
 .blog-content th {
-  font-weight: 600;
-  color: #374151;
+  font-weight: var(--weight-semibold);
+  color: var(--color-gray-700);
   white-space: nowrap;
 }
 
 .blog-content tbody tr:nth-child(even) {
-  background-color: #f9fafb;
+  background-color: var(--color-gray-50);
 }
