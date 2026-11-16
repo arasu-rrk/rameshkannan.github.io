@@ -16,7 +16,7 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.840.0",
     "gray-matter": "npm:@11ty/gray-matter@^3.0.0",
-    "next": "^16.4.1",
+    "next": "^16.4.5",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "rehype-highlight": "^7.0.2",
@@ -32,11 +32,11 @@
     "@types/node": "^22.20.5",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
-    "eslint": "^10.12.0",
+    "eslint": "^10.15.0",
     "sass": "^1.105.1",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.71.2",
+    "typescript-eslint": "^8.73.0",
     "wrangler": "^4.156.2"
   }
 }
