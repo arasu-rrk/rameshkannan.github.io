@@ -1,3 +1,6 @@
+'use client';
+
+import { useLayoutEffect, useState } from 'react';
 import resume from '@/data/resume.json';
 import ResumeContact from '@/components/ResumeContact';
 import ResumePrintButton from '@/components/ResumePrintButton';
@@ -5,8 +8,39 @@ import styles from '@/app/resume/resume.module.scss';
 
 /** Renders resume content from the shared resume data. */
 export default function ResumeView() {
+  const [theme, setTheme] = useState<'classic' | 'modern-blue'>('classic');
+  const [showThemeSwitcher, setShowThemeSwitcher] = useState(false);
+
+  useLayoutEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setShowThemeSwitcher(params.has('theme'));
+    setTheme(params.get('theme') === 'modern-blue' ? 'modern-blue' : 'classic');
+  }, []);
+
+  function changeTheme(value: string) {
+    if (value !== 'classic' && value !== 'modern-blue') return;
+
+    setTheme(value);
+    const url = new URL(window.location.href);
+    url.searchParams.set('theme', value);
+    window.history.replaceState(null, '', url);
+  }
+
   return (
-    <main className={styles.page}>
+    <main className={`${styles.page} ${theme === 'modern-blue' ? styles.modernBlue : ''}`}>
+      {showThemeSwitcher && (
+        <div className={styles.themeControls}>
+          <label htmlFor="resume-theme">Theme</label>
+          <select
+            id="resume-theme"
+            value={theme}
+            onChange={(event) => changeTheme(event.target.value)}
+          >
+            <option value="classic">Classic</option>
+            <option value="modern-blue">Modern Blue</option>
+          </select>
+        </div>
+      )}
       <ResumePrintButton />
       <article className={styles.resume}>
         <header className={styles.header}>
