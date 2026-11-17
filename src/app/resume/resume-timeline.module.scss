@@ -1,0 +1,329 @@
+$navy: #183b70;
+$accent: #c8874a;
+$muted: #64748b;
+$font-body: 0.82rem;
+
+.timelinePage {
+  background: #f0f3f8;
+  font-family: Arial, Helvetica, sans-serif;
+
+  h1,
+  h2 {
+    font-family: inherit;
+  }
+}
+
+.resume {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 5vw, 3rem);
+  background: var(--color-white);
+  box-shadow: 0 8px 30px rgb(24 59 112 / 10%);
+  color: #30343b;
+  font-size: $font-body;
+  line-height: 1.4;
+
+  p {
+    margin: 0;
+  }
+}
+
+.header {
+  margin-bottom: 1.9rem;
+
+  h1 {
+    margin: 0;
+    color: $navy;
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+}
+
+.title {
+  margin-top: 0.25rem !important;
+  color: $accent;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.linkedin {
+  display: inline-block;
+  margin-top: 0.35rem;
+  color: $accent;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.section {
+  margin-top: 1.55rem;
+
+  > h2 {
+    margin: 0 0 0.65rem;
+    color: $navy;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.25rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.timeline {
+  display: grid;
+}
+
+.companyGroups {
+  display: grid;
+  gap: 1.35rem;
+}
+
+.companyHeading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 0.6rem;
+  margin: 0 0 0.3rem;
+}
+
+.companyLocation {
+  color: $muted;
+  font-size: 0.78rem;
+}
+
+.timelineItem {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(9rem, 0.28fr) 1.25rem minmax(0, 1fr);
+  gap: 0 0.75rem;
+  padding-bottom: 1.25rem;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.experienceItem {
+  grid-template-columns: 1.25rem minmax(0, 1fr);
+  gap: 0 0.75rem;
+}
+
+.metadata {
+  color: $muted;
+  font-size: 0.78rem;
+}
+
+.dates {
+  color: $navy;
+  font-weight: 700;
+}
+
+.marker {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    top: 0.2rem;
+    bottom: -1.25rem;
+    left: 50%;
+    width: 2px;
+    background: #d7dbe2;
+    content: "";
+    transform: translateX(-50%);
+  }
+
+  &::after {
+    position: absolute;
+    top: 0.2rem;
+    left: 50%;
+    width: 0.65rem;
+    height: 0.65rem;
+    border: 2px solid var(--color-white);
+    border-radius: 50%;
+    background: $navy;
+    content: "";
+    transform: translateX(-50%);
+  }
+
+  .timelineItem:last-child &::before {
+    bottom: 0;
+  }
+}
+
+.content,
+.project {
+  h3,
+  h4 {
+    margin: 0;
+    color: #647995;
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  ul {
+    margin: 0.3rem 0 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      position: relative;
+      padding-left: 1rem;
+
+      &::before {
+        position: absolute;
+        left: 0;
+        color: $muted;
+        content: "•";
+      }
+    }
+  }
+}
+
+.roleHeading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.1rem 1rem;
+}
+
+.organization {
+  color: $accent;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.projects {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.project {
+  padding-left: 0.75rem;
+  border-left: 2px solid #d7dbe2;
+
+  > p:not(.dates) {
+    margin-top: 0.25rem;
+  }
+}
+
+.technologies {
+  color: $muted;
+  font-size: 0.75rem;
+}
+
+@media (max-width: 700px) {
+  .resume {
+    padding: 1.5rem 1.1rem 2.5rem;
+  }
+
+  .skills {
+    grid-template-columns: 1fr;
+  }
+
+  .timelineItem {
+    grid-template-columns: minmax(5rem, 0.3fr) 1rem minmax(0, 1fr);
+    gap: 0 0.4rem;
+  }
+
+  .experienceItem {
+    grid-template-columns: 1rem minmax(0, 1fr);
+    gap: 0 0.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timelineItem {
+    display: block;
+    padding: 0 0 1.25rem 1.1rem;
+  }
+
+  .metadata {
+    margin-bottom: 0.3rem;
+  }
+
+  .marker {
+    position: absolute;
+    top: 0;
+    bottom: 1.25rem;
+    left: 0;
+    width: 0.75rem;
+
+    &::before {
+      left: 50%;
+      height: auto;
+    }
+  }
+
+  .timelineItem:last-child .marker {
+    bottom: 0;
+  }
+
+  .timelineItem:last-child .marker::before {
+    bottom: 0;
+  }
+}
+
+@media print {
+  .timelinePage {
+    background: var(--color-white);
+  }
+
+  .timelinePage .resume {
+    max-width: none;
+    padding: 0;
+    box-shadow: none;
+    font-size: 9pt;
+    line-height: 1.3;
+  }
+
+  .header h1 {
+    font-size: 22pt;
+  }
+
+  .title {
+    font-size: 11pt;
+  }
+
+  .section > h2 {
+    font-size: 11pt;
+  }
+
+  .companyLocation,
+  .metadata {
+    font-size: 8pt;
+  }
+
+  .content h3,
+  .content h4,
+  .project h3 {
+    font-size: 10pt;
+  }
+
+  .organization {
+    font-size: 9pt;
+  }
+
+  .technologies {
+    font-size: 8pt;
+  }
+
+  .companyGroup,
+  .timelineItem,
+  .project {
+    break-inside: avoid;
+  }
+}

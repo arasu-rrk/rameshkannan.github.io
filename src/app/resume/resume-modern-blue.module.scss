@@ -1,0 +1,169 @@
+$font-size-body: 0.74rem;
+$font-size-name: clamp(1.8rem, 4vw, 1.9rem);
+$font-size-title: 0.9rem;
+$font-size-section: 1.05rem;
+$font-size-role: 0.88rem;
+$font-size-compact: 0.68rem;
+
+.modernBluePage {
+  background: #eaf0f3;
+  font-family: Arial, Helvetica, sans-serif;
+
+  h1,
+  h2 {
+    font-family: inherit;
+  }
+}
+
+.resume {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 5vw, 3rem);
+  background: var(--color-white);
+  box-shadow: 0 8px 30px rgb(38 53 69 / 12%);
+  color: #263545;
+  font-size: $font-size-body;
+  line-height: 1.3;
+
+  p {
+    margin: 0;
+  }
+}
+
+.header {
+  margin-bottom: 1.9rem;
+}
+
+.nameLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
+
+  h1 {
+    margin: 0;
+    color: #263545;
+    font-size: $font-size-name;
+    font-weight: 700;
+    line-height: 1.12;
+  }
+}
+
+.title {
+  color: #4a70ad;
+  font-size: $font-size-title;
+  font-weight: 600;
+}
+
+.linkedin {
+  display: inline-block;
+  margin-top: 0.35rem;
+  color: #4a70ad;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.section {
+  margin-top: 1.45rem;
+
+  > h2 {
+    margin: 0 0 0.65rem;
+    padding-bottom: 0.18rem;
+    border-bottom: 3px solid #263545;
+    color: #263545;
+    font-size: $font-size-section;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+}
+
+.skills,
+.entry ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+
+  li {
+    position: relative;
+    padding-left: 1.25rem;
+
+    &::before {
+      position: absolute;
+      left: 0;
+      content: "•";
+    }
+  }
+}
+
+.entries {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.entryHeading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.1rem 1rem;
+
+  h3 {
+    margin: 0;
+    font-size: $font-size-role;
+    font-weight: 700;
+  }
+
+  > p {
+    color: #56697c;
+    font-size: $font-size-compact;
+    text-align: right;
+  }
+}
+
+.organization {
+  color: #4a70ad;
+  font-weight: 600;
+}
+
+.entry > p:not(.organization) {
+  margin-top: 0.3rem;
+}
+
+.technologies {
+  font-size: $font-size-compact;
+}
+
+@media (max-width: 600px) {
+  .resume {
+    padding: 1.5rem 1.1rem 2.5rem;
+    box-shadow: none;
+  }
+
+  .entryHeading {
+    display: block;
+
+    > p {
+      text-align: left;
+    }
+  }
+}
+
+@media print {
+  .modernBluePage {
+    background: var(--color-white);
+  }
+
+  .resume {
+    max-width: none;
+    padding: 0;
+    box-shadow: none;
+    font-size: var(--font-size-print);
+  }
+
+  .entry {
+    break-inside: avoid;
+  }
+}
