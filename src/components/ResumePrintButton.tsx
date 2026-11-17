@@ -9,6 +9,16 @@ export default function ResumePrintButton() {
 
   useEffect(() => {
     setPageUrl(window.location.href);
+
+    function handlePrintShortcut(event: KeyboardEvent) {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'p') {
+        event.preventDefault();
+        window.print();
+      }
+    }
+
+    window.addEventListener('keydown', handlePrintShortcut);
+    return () => window.removeEventListener('keydown', handlePrintShortcut);
   }, []);
 
   return (
