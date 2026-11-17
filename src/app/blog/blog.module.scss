@@ -2,7 +2,7 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem 1rem;
-  color: var(--color-gray-900);
+  color: var(--color-text-primary);
   font-family: var(--font-body-family);
   font-size: var(--font-size-blog);
 }
@@ -14,7 +14,7 @@
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
   font-weight: var(--weight-bold);
-  color: var(--color-gray-900);
+  color: var(--color-text-primary);
 }
 
 .blog h2,
@@ -27,7 +27,7 @@
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
   font-weight: var(--weight-bold);
-  color: var(--color-gray-900);
+  color: var(--color-text-primary);
   position: relative;
 }
 
@@ -42,7 +42,7 @@
 .blog h6 :global(.heading-anchor) {
   opacity: 0;
   margin-left: 0.4rem;
-  color: var(--color-gray-400);
+  color: var(--color-text-subtle);
   text-decoration: none;
   font-size: var(--font-size-heading-anchor);
   font-family: var(--font-body-family);
@@ -64,15 +64,15 @@
 
 .blog p {
   margin: 0.75rem 0;
-  color: var(--color-gray-700);
+  color: var(--color-text-secondary);
   line-height: 1.5;
 }
 
 .blog a {
-  color: var(--color-blue-600);
+  color: var(--color-link);
 
   &:hover {
-    color: var(--color-blue-700);
+    color: var(--color-link-hover);
     text-decoration: underline;
   }
 }
@@ -85,7 +85,7 @@
 .blog ul,
 .blog ol {
   margin: 0.75rem 0 0.75rem 1.5rem;
-  color: var(--color-gray-700);
+  color: var(--color-text-secondary);
   line-height: 1.5;
 }
 
@@ -103,10 +103,10 @@
 }
 
 .blog blockquote {
-  border-left: 4px solid var(--color-gray-200);
+  border-left: 4px solid var(--color-border-default);
   padding-left: 1rem;
   margin: 1rem 0;
-  color: var(--color-gray-500);
+  color: var(--color-text-muted);
   font-style: italic;
 }
 
@@ -128,7 +128,7 @@
 
 .blog code {
   font-size: var(--font-size-code);
-  background: rgba(15, 23, 42, 0.08);
+  background: var(--color-code-inline);
   padding: 3px 5px;
   border-radius: 4px;
 }
@@ -141,7 +141,7 @@
 
 .blog hr {
   border: none;
-  border-top: 1px solid var(--color-gray-200);
+  border-top: 1px solid var(--color-border-default);
   margin: 2rem 0;
 }
 
@@ -153,13 +153,13 @@
 
 .blog th,
 .blog td {
-  border: 1px solid var(--color-gray-200);
+  border: 1px solid var(--color-border-default);
   padding: 0.5rem 0.75rem;
   text-align: left;
 }
 
 .blog th {
-  background: var(--color-gray-50);
+  background: var(--color-surface-subtle);
   font-weight: var(--weight-semibold);
 }
 

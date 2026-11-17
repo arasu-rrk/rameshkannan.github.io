@@ -1,23 +1,21 @@
+@use './resume-mixins' as resume;
+
 .page {
   min-height: calc(100vh - 65px);
   padding: 2rem 1rem 4rem;
-  background: var(--color-gray-100);
+  background: var(--color-surface-page);
   color: var(--resume-ink);
   font-family: var(--font-resume-family);
 }
 
 .resume {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: clamp(1.5rem, 5vw, 3rem);
-  background: var(--color-white);
-  box-shadow: 0 8px 30px var(--resume-shadow);
-  font-size: var(--font-size-base);
-  line-height: 1.4;
-
-  p {
-    margin: 0;
-  }
+  @include resume.resume-sheet(
+    960px,
+    var(--resume-ink),
+    var(--font-size-base),
+    1.4,
+    0 8px 30px var(--resume-shadow)
+  );
 }
 
 .printControls {
@@ -42,7 +40,7 @@
   padding: 0.45rem 0.6rem;
   border: 1px solid var(--resume-ink);
   border-radius: 0.35rem;
-  background: var(--color-white);
+  background: var(--color-surface-sheet);
   color: var(--resume-ink);
   font: var(--weight-semibold) var(--font-size-resume-small) var(--font-ui-family);
 
@@ -68,16 +66,16 @@
   padding: 0.55rem 0.9rem;
   border: 1px solid var(--resume-ink);
   border-radius: 0.35rem;
-  background: var(--color-white);
+  background: var(--color-surface-sheet);
   color: var(--resume-ink);
   font: var(--weight-semibold) var(--font-size-resume-small) var(--font-ui-family);
   cursor: pointer;
   transition: background-color 0.15s, color 0.15s, border-color 0.15s;
 
   &:hover {
-    border-color: var(--color-blue-600);
-    background: var(--color-blue-600);
-    color: var(--color-white);
+    border-color: var(--color-link);
+    background: var(--color-link);
+    color: var(--color-on-accent);
   }
 
   &:focus-visible {
@@ -135,20 +133,20 @@
   padding: 0.2rem 0.55rem;
   border: 1px solid var(--resume-ink);
   border-radius: 0.25rem;
-  background: var(--color-white);
+  background: var(--color-surface-sheet);
   color: var(--resume-ink);
   font: inherit;
   cursor: pointer;
   transition: background-color 0.15s, color 0.15s;
 
   &:hover:not(:disabled) {
-    border-color: var(--color-blue-600);
-    background: var(--color-blue-600);
-    color: var(--color-white);
+    border-color: var(--color-link);
+    background: var(--color-link);
+    color: var(--color-on-accent);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--color-blue-600);
+    outline: 2px solid var(--color-link);
     outline-offset: 2px;
   }
 
@@ -171,7 +169,7 @@
   text-decoration: none;
 
   &:hover {
-    color: var(--color-blue-600);
+    color: var(--color-link);
     text-decoration: underline;
   }
 }
@@ -258,8 +256,7 @@
   }
 
   .resume {
-    padding: 1.5rem 1.1rem 2.5rem;
-    box-shadow: none;
+    @include resume.resume-sheet-mobile;
     font-size: var(--font-size-resume-compact);
   }
 
@@ -277,7 +274,7 @@
     margin: 0.65in 0.65in 0.8in;
 
     @bottom-right {
-      color: #555;
+      color: var(--color-print-muted);
       content: "Page " counter(page) " of " counter(pages);
       font: 8pt Arial, Helvetica, sans-serif;
     }
@@ -294,7 +291,7 @@
     left: 0;
     display: block;
     overflow: hidden;
-    color: #555;
+    color: var(--color-print-muted);
     font: 8pt Arial, Helvetica, sans-serif;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -307,7 +304,7 @@
   .page {
     min-height: 0;
     padding: 0;
-    background: var(--color-white);
+    background: var(--color-surface-sheet);
   }
 
   .resume {

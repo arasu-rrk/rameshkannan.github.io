@@ -1,0 +1,25 @@
+@mixin resume-sheet(
+  $max-width,
+  $text-color,
+  $font-size,
+  $line-height,
+  $shadow
+) {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 5vw, 3rem);
+  background: var(--color-surface-sheet);
+  box-shadow: $shadow;
+  color: $text-color;
+  font-size: $font-size;
+  line-height: $line-height;
+
+  :where(p) {
+    margin: 0;
+  }
+}
+
+@mixin resume-sheet-mobile {
+  padding: 1.5rem 1.1rem 2.5rem;
+  box-shadow: none;
+}

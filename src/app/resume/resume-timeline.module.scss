@@ -1,10 +1,10 @@
-$navy: #183b70;
-$accent: #c8874a;
-$muted: #64748b;
+@use './resume-mixins' as resume;
+
 $font-body: 0.82rem;
 
 .timelinePage {
-  background: #f0f3f8;
+  background: var(--color-resume-timeline-page);
+  color: var(--color-resume-timeline-ink);
   font-family: Arial, Helvetica, sans-serif;
 
   h1,
@@ -14,18 +14,13 @@ $font-body: 0.82rem;
 }
 
 .resume {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: clamp(1.5rem, 5vw, 3rem);
-  background: var(--color-white);
-  box-shadow: 0 8px 30px rgb(24 59 112 / 10%);
-  color: #30343b;
-  font-size: $font-body;
-  line-height: 1.4;
-
-  p {
-    margin: 0;
-  }
+  @include resume.resume-sheet(
+    1000px,
+    var(--color-resume-timeline-ink),
+    $font-body,
+    1.4,
+    0 8px 30px var(--color-resume-timeline-shadow)
+  );
 }
 
 .header {
@@ -33,7 +28,7 @@ $font-body: 0.82rem;
 
   h1 {
     margin: 0;
-    color: $navy;
+    color: var(--color-resume-timeline-navy);
     font-size: clamp(2rem, 5vw, 2.5rem);
     font-weight: 700;
     line-height: 1.1;
@@ -42,8 +37,8 @@ $font-body: 0.82rem;
 }
 
 .title {
-  margin-top: 0.25rem !important;
-  color: $accent;
+  margin-top: 0.25rem;
+  color: var(--color-resume-timeline-accent);
   font-size: 1.15rem;
   font-weight: 700;
 }
@@ -51,7 +46,7 @@ $font-body: 0.82rem;
 .linkedin {
   display: inline-block;
   margin-top: 0.35rem;
-  color: $accent;
+  color: var(--color-resume-timeline-accent);
   text-decoration: none;
 
   &:hover {
@@ -64,7 +59,7 @@ $font-body: 0.82rem;
 
   > h2 {
     margin: 0 0 0.65rem;
-    color: $navy;
+    color: var(--color-resume-timeline-navy);
     font-size: 1.2rem;
     font-weight: 700;
     line-height: 1.2;
@@ -99,7 +94,7 @@ $font-body: 0.82rem;
 }
 
 .companyLocation {
-  color: $muted;
+  color: var(--color-resume-timeline-muted);
   font-size: 0.78rem;
 }
 
@@ -121,12 +116,12 @@ $font-body: 0.82rem;
 }
 
 .metadata {
-  color: $muted;
+  color: var(--color-resume-timeline-muted);
   font-size: 0.78rem;
 }
 
 .dates {
-  color: $navy;
+  color: var(--color-resume-timeline-navy);
   font-weight: 700;
 }
 
@@ -139,7 +134,7 @@ $font-body: 0.82rem;
     bottom: -1.25rem;
     left: 50%;
     width: 2px;
-    background: #d7dbe2;
+    background: var(--color-resume-timeline-border);
     content: "";
     transform: translateX(-50%);
   }
@@ -150,9 +145,9 @@ $font-body: 0.82rem;
     left: 50%;
     width: 0.65rem;
     height: 0.65rem;
-    border: 2px solid var(--color-white);
+    border: 2px solid var(--color-surface-sheet);
     border-radius: 50%;
-    background: $navy;
+    background: var(--color-resume-timeline-navy);
     content: "";
     transform: translateX(-50%);
   }
@@ -162,34 +157,36 @@ $font-body: 0.82rem;
   }
 }
 
-.content,
-.project {
-  h3,
-  h4 {
-    margin: 0;
-    color: #647995;
-    font-size: 1.05rem;
-    font-weight: 500;
-    line-height: 1.3;
-  }
+.content h3,
+.content h4,
+.project h3,
+.project h4 {
+  margin: 0;
+  color: var(--color-resume-timeline-content);
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
 
-  ul {
-    margin: 0.3rem 0 0;
-    padding: 0;
-    list-style: none;
+.content ul,
+.project ul {
+  margin: 0.3rem 0 0;
+  padding: 0;
+  list-style: none;
+}
 
-    li {
-      position: relative;
-      padding-left: 1rem;
+.content li,
+.project li {
+  position: relative;
+  padding-left: 1rem;
+}
 
-      &::before {
-        position: absolute;
-        left: 0;
-        color: $muted;
-        content: "•";
-      }
-    }
-  }
+.content li::before,
+.project li::before {
+  position: absolute;
+  left: 0;
+  color: var(--color-resume-timeline-muted);
+  content: "•";
 }
 
 .roleHeading {
@@ -201,7 +198,7 @@ $font-body: 0.82rem;
 }
 
 .organization {
-  color: $accent;
+  color: var(--color-resume-timeline-accent);
   font-size: 0.95rem;
   font-weight: 700;
 }
@@ -213,7 +210,7 @@ $font-body: 0.82rem;
 
 .project {
   padding-left: 0.75rem;
-  border-left: 2px solid #d7dbe2;
+  border-left: 2px solid var(--color-resume-timeline-border);
 
   > p:not(.dates) {
     margin-top: 0.25rem;
@@ -221,13 +218,13 @@ $font-body: 0.82rem;
 }
 
 .technologies {
-  color: $muted;
+  color: var(--color-resume-timeline-muted);
   font-size: 0.75rem;
 }
 
 @media (max-width: 700px) {
   .resume {
-    padding: 1.5rem 1.1rem 2.5rem;
+    @include resume.resume-sheet-mobile;
   }
 
   .skills {
@@ -279,7 +276,7 @@ $font-body: 0.82rem;
 
 @media print {
   .timelinePage {
-    background: var(--color-white);
+    background: var(--color-surface-sheet);
   }
 
   .timelinePage .resume {
