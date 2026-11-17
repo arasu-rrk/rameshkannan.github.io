@@ -18,8 +18,11 @@ export default function ResumeView() {
 
   useLayoutEffect(() => {
     const params = new URLSearchParams(window.location.search);
+    const requestedTheme = params.get('theme');
     setShowThemeSwitcher(params.has('theme'));
-    setTheme(params.get('theme') === 'modern-blue' ? 'modern-blue' : 'classic');
+    setTheme(requestedTheme === 'modern-blue' || requestedTheme === 'timeline'
+      ? requestedTheme
+      : 'classic');
   }, []);
 
   function changeTheme(value: string) {
