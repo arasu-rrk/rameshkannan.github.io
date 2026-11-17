@@ -90,8 +90,17 @@ $font-body: 0.82rem;
   gap: 1.35rem;
 }
 
-.companyGroup > .organization {
+.companyHeading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 0.6rem;
   margin: 0 0 0.3rem;
+}
+
+.companyLocation {
+  color: $muted;
+  font-size: 0.78rem;
 }
 
 .timelineItem {
@@ -104,6 +113,11 @@ $font-body: 0.82rem;
   &:last-child {
     padding-bottom: 0;
   }
+}
+
+.experienceItem {
+  grid-template-columns: 1.25rem minmax(0, 1fr);
+  gap: 0 0.75rem;
 }
 
 .metadata {
@@ -165,6 +179,14 @@ $font-body: 0.82rem;
   }
 }
 
+.roleHeading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.1rem 1rem;
+}
+
 .organization {
   color: $accent;
   font-size: 0.95rem;
@@ -201,6 +223,11 @@ $font-body: 0.82rem;
 
   .timelineItem {
     grid-template-columns: minmax(5rem, 0.3fr) 1rem minmax(0, 1fr);
+    gap: 0 0.4rem;
+  }
+
+  .experienceItem {
+    grid-template-columns: 1rem minmax(0, 1fr);
     gap: 0 0.4rem;
   }
 }

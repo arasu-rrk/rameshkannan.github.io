@@ -44,17 +44,24 @@ export default function ResumeTimeline() {
         <div className={styles.companyGroups}>
           {[...experienceByCompany].map(([company, jobs]) => (
             <section className={styles.companyGroup} key={company} aria-label={company}>
-              <h3 className={styles.organization}>{company}</h3>
+              <div className={styles.companyHeading}>
+                <h3 className={styles.organization}>{company}</h3>
+                <p className={styles.companyLocation}>
+                  {[...new Set(jobs.map((job) => job.location))].join(' · ')}
+                </p>
+              </div>
               <div className={styles.timeline}>
                 {jobs.map((job) => (
-                  <article className={styles.timelineItem} key={`${job.role}-${job.dates}`}>
-                    <div className={styles.metadata}>
-                      <p className={styles.dates}>{job.dates}</p>
-                      <p>{job.location}</p>
-                    </div>
+                  <article
+                    className={`${styles.timelineItem} ${styles.experienceItem}`}
+                    key={`${job.role}-${job.dates}`}
+                  >
                     <div className={styles.marker} aria-hidden="true" />
                     <div className={styles.content}>
-                      <h4>{job.role}</h4>
+                      <div className={styles.roleHeading}>
+                        <h4>{job.role}</h4>
+                        <p className={styles.dates}>{job.dates}</p>
+                      </div>
                       <ul>
                         {job.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
                       </ul>
