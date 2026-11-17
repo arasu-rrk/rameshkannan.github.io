@@ -6,6 +6,12 @@
       "sourceType": "github",
       "skillPath": "skills/autofix/SKILL.md",
       "computedHash": "1c665af094b2a307a8ab149a4b6ee73097dac24a4fa533821d7cc2e7ede7b9cf"
+    },
+    "scss-best-practices": {
+      "source": "mindrally/skills",
+      "sourceType": "github",
+      "skillPath": "scss-best-practices/SKILL.md",
+      "computedHash": "20314b9f6c794d88e07f24e8d24aac2809d48151b44bd8f9c8c82644ca63e2eb"
     }
   }
 }

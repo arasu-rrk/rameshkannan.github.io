@@ -1,3 +1,5 @@
+@use './resume-mixins' as resume;
+
 $navy: #183b70;
 $accent: #c8874a;
 $muted: #64748b;
@@ -14,18 +16,13 @@ $font-body: 0.82rem;
 }
 
 .resume {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: clamp(1.5rem, 5vw, 3rem);
-  background: var(--color-white);
-  box-shadow: 0 8px 30px rgb(24 59 112 / 10%);
-  color: #30343b;
-  font-size: $font-body;
-  line-height: 1.4;
-
-  p {
-    margin: 0;
-  }
+  @include resume.resume-sheet(
+    1000px,
+    #30343b,
+    $font-body,
+    1.4,
+    0 8px 30px rgb(24 59 112 / 10%)
+  );
 }
 
 .header {
@@ -42,7 +39,7 @@ $font-body: 0.82rem;
 }
 
 .title {
-  margin-top: 0.25rem !important;
+  margin-top: 0.25rem;
   color: $accent;
   font-size: 1.15rem;
   font-weight: 700;
@@ -162,34 +159,36 @@ $font-body: 0.82rem;
   }
 }
 
-.content,
-.project {
-  h3,
-  h4 {
-    margin: 0;
-    color: #647995;
-    font-size: 1.05rem;
-    font-weight: 500;
-    line-height: 1.3;
-  }
+.content h3,
+.content h4,
+.project h3,
+.project h4 {
+  margin: 0;
+  color: #647995;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
 
-  ul {
-    margin: 0.3rem 0 0;
-    padding: 0;
-    list-style: none;
+.content ul,
+.project ul {
+  margin: 0.3rem 0 0;
+  padding: 0;
+  list-style: none;
+}
 
-    li {
-      position: relative;
-      padding-left: 1rem;
+.content li,
+.project li {
+  position: relative;
+  padding-left: 1rem;
+}
 
-      &::before {
-        position: absolute;
-        left: 0;
-        color: $muted;
-        content: "•";
-      }
-    }
-  }
+.content li::before,
+.project li::before {
+  position: absolute;
+  left: 0;
+  color: $muted;
+  content: "•";
 }
 
 .roleHeading {
@@ -227,7 +226,7 @@ $font-body: 0.82rem;
 
 @media (max-width: 700px) {
   .resume {
-    padding: 1.5rem 1.1rem 2.5rem;
+    @include resume.resume-sheet-mobile;
   }
 
   .skills {
