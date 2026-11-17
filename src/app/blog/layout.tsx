@@ -3,7 +3,7 @@ import styles from './blog.module.scss';
 
 export default function BlogLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className={`${styles.blog} min-h-screen bg-white`}>
+    <div className={`${styles.blog} min-h-screen bg-background`}>
       {children}
     </div>
   );
