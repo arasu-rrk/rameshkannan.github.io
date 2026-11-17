@@ -2,6 +2,13 @@ import resume from '@/data/resume.json';
 import ResumeContact from '@/components/ResumeContact';
 import styles from '@/app/resume/resume-timeline.module.scss';
 
+const experienceByCompany = resume.experience.reduce((groups, job) => {
+  const companyGroup = groups.get(job.company) ?? [];
+  companyGroup.push(job);
+  groups.set(job.company, companyGroup);
+  return groups;
+}, new Map<string, typeof resume.experience>());
+
 /** Renders the timeline resume design. */
 export default function ResumeTimeline() {
   return (
@@ -34,22 +41,28 @@ export default function ResumeTimeline() {
 
       <section className={styles.section} aria-labelledby="experience-heading">
         <h2 id="experience-heading">Professional Experience</h2>
-        <div className={styles.timeline}>
-          {resume.experience.map((job) => (
-            <article className={styles.timelineItem} key={`${job.role}-${job.dates}`}>
-              <div className={styles.metadata}>
-                <p className={styles.dates}>{job.dates}</p>
-                <p>{job.location}</p>
+        <div className={styles.companyGroups}>
+          {[...experienceByCompany].map(([company, jobs]) => (
+            <section className={styles.companyGroup} key={company} aria-label={company}>
+              <h3 className={styles.organization}>{company}</h3>
+              <div className={styles.timeline}>
+                {jobs.map((job) => (
+                  <article className={styles.timelineItem} key={`${job.role}-${job.dates}`}>
+                    <div className={styles.metadata}>
+                      <p className={styles.dates}>{job.dates}</p>
+                      <p>{job.location}</p>
+                    </div>
+                    <div className={styles.marker} aria-hidden="true" />
+                    <div className={styles.content}>
+                      <h4>{job.role}</h4>
+                      <ul>
+                        {job.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
+                      </ul>
+                    </div>
+                  </article>
+                ))}
               </div>
-              <div className={styles.marker} aria-hidden="true" />
-              <div className={styles.content}>
-                <h3>{job.role}</h3>
-                <p className={styles.organization}>{job.company}</p>
-                <ul>
-                  {job.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
-                </ul>
-              </div>
-            </article>
+            </section>
           ))}
         </div>
       </section>

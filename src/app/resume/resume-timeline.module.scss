@@ -85,6 +85,15 @@ $font-body: 0.82rem;
   display: grid;
 }
 
+.companyGroups {
+  display: grid;
+  gap: 1.35rem;
+}
+
+.companyGroup > .organization {
+  margin: 0 0 0.3rem;
+}
+
 .timelineItem {
   position: relative;
   display: grid;
@@ -141,7 +150,8 @@ $font-body: 0.82rem;
 
 .content,
 .project {
-  h3 {
+  h3,
+  h4 {
     margin: 0;
     color: #647995;
     font-size: 1.05rem;
@@ -239,6 +249,7 @@ $font-body: 0.82rem;
     font-size: var(--font-size-print);
   }
 
+  .companyGroup,
   .timelineItem,
   .project {
     break-inside: avoid;
