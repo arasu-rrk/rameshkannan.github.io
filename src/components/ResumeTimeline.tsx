@@ -10,7 +10,7 @@ const experienceByCompany = resume.experience.reduce((groups, job) => {
 }, new Map<string, typeof resume.experience>());
 
 /** Renders the timeline resume design. */
-export default function ResumeTimeline() {
+export default function ResumeTimeline({ profile }: { profile: string }) {
   return (
     <article className={styles.resume}>
       <header className={styles.header}>
@@ -24,7 +24,7 @@ export default function ResumeTimeline() {
 
       <section className={styles.section} aria-labelledby="profile-heading">
         <h2 id="profile-heading">Profile</h2>
-        <p>{resume.profile}</p>
+        <p>{profile}</p>
       </section>
 
       <section className={styles.section} aria-labelledby="skills-heading">

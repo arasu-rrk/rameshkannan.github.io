@@ -5,7 +5,7 @@
     "label": "linkedin.com/in/ramesh-kannan-rajendran",
     "url": "https://www.linkedin.com/in/ramesh-kannan-rajendran"
   },
-  "profile": "Senior Software Engineer with 13+ years of experience designing and building scalable, cloud-native distributed systems using .NET, Azure, and modern databases. Proven expertise in microservices architecture, legacy system modernization, and REST API development. Experienced in leading cross-functional engineering teams using Agile/Scrum methodologies, driving CI/CD adoption, and delivering SaaS products at scale. Demonstrated track record of reducing infrastructure costs, improving system performance, and aligning technical roadmaps with business objectives.",
+  "profile": "Senior Software Engineer with {{experienceYears}}+ years of experience designing and building scalable, cloud-native distributed systems using .NET, Azure, and modern databases. Proven expertise in microservices architecture, legacy system modernization, and REST API development. Experienced in leading cross-functional engineering teams using Agile/Scrum methodologies, driving CI/CD adoption, and delivering SaaS products at scale. Demonstrated track record of reducing infrastructure costs, improving system performance, and aligning technical roadmaps with business objectives.",
   "skills": [
     {
       "category": "Languages & Frameworks",

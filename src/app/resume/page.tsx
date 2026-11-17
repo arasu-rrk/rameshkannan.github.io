@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import ResumeView from '@/components/ResumeView';
+import { getResumeProfile } from '@/lib/resume';
 
 export const metadata: Metadata = {
   title: 'Resume',
@@ -10,5 +11,5 @@ export const metadata: Metadata = {
 
 /** Renders the resume at its canonical URL. */
 export default function ResumePage() {
-  return <ResumeView />;
+  return <ResumeView profile={getResumeProfile()} />;
 }

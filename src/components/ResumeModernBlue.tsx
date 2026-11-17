@@ -3,7 +3,7 @@ import ResumeContact from '@/components/ResumeContact';
 import styles from '@/app/resume/resume-modern-blue.module.scss';
 
 /** Renders the Modern Blue resume design. */
-export default function ResumeModernBlue() {
+export default function ResumeModernBlue({ profile }: { profile: string }) {
   return (
     <article className={styles.resume}>
       <header className={styles.header}>
@@ -19,7 +19,7 @@ export default function ResumeModernBlue() {
 
       <section className={styles.section} aria-labelledby="profile-heading">
         <h2 id="profile-heading">Profile</h2>
-        <p>{resume.profile}</p>
+        <p>{profile}</p>
       </section>
 
       <section className={styles.section} aria-labelledby="skills-heading">

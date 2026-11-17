@@ -3,7 +3,7 @@ import ResumeContact from '@/components/ResumeContact';
 import styles from '@/app/resume/resume.module.scss';
 
 /** Renders the classic resume design. */
-export default function ResumeClassic() {
+export default function ResumeClassic({ profile }: { profile: string }) {
   return (
     <article className={styles.resume}>
       <header className={styles.header}>
@@ -19,7 +19,7 @@ export default function ResumeClassic() {
 
       <section className={styles.section} aria-labelledby="profile-heading">
         <h2 id="profile-heading">Profile</h2>
-        <p>{resume.profile}</p>
+        <p>{profile}</p>
       </section>
 
       <section className={styles.section} aria-labelledby="skills-heading">

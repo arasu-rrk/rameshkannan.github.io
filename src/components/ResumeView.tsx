@@ -12,7 +12,7 @@ import timelineStyles from '@/app/resume/resume-timeline.module.scss';
 type ResumeTheme = 'classic' | 'modern-blue' | 'timeline';
 
 /** Renders the selected resume design and query-string theme controls. */
-export default function ResumeView() {
+export default function ResumeView({ profile }: { profile: string }) {
   const [theme, setTheme] = useState<ResumeTheme>('classic');
   const [showThemeSwitcher, setShowThemeSwitcher] = useState(false);
 
@@ -55,9 +55,9 @@ export default function ResumeView() {
         </div>
       )}
       <ResumePrintButton />
-      {theme === 'classic' && <ResumeClassic />}
-      {theme === 'modern-blue' && <ResumeModernBlue />}
-      {theme === 'timeline' && <ResumeTimeline />}
+      {theme === 'classic' && <ResumeClassic profile={profile} />}
+      {theme === 'modern-blue' && <ResumeModernBlue profile={profile} />}
+      {theme === 'timeline' && <ResumeTimeline profile={profile} />}
     </main>
   );
 }
