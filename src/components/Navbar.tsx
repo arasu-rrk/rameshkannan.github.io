@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -10,10 +10,54 @@ const navLinks = [
   { href: '/blog', label: 'Blog' },
 ];
 
+function ThemeToggle({
+  theme,
+  onToggle,
+  className,
+}: {
+  theme: 'light' | 'dark';
+  onToggle: () => void;
+  className: string;
+}) {
+  const nextTheme = theme === 'dark' ? 'light' : 'dark';
+  return (
+    <button
+      type="button"
+      onClick={onToggle}
+      aria-label={`Switch to ${nextTheme === 'dark' ? 'Dark' : 'Light'} theme`}
+      title={`Switch to ${nextTheme === 'dark' ? 'Dark' : 'Light'} theme`}
+      className={`${className} cursor-pointer rounded-md p-2 text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900`}
+    >
+      {theme === 'dark' ? (
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+        </svg>
+      ) : (
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z" />
+        </svg>
+      )}
+    </button>
+  );
+}
+
 /** Renders responsive site navigation with the current route highlighted. */
 export default function Navbar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+
+  useEffect(() => {
+    setTheme(document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light');
+  }, []);
+
+  function toggleTheme() {
+    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = nextTheme;
+    localStorage.setItem('theme', nextTheme);
+    setTheme(nextTheme);
+  }
 
   return (
     <nav className="print:hidden bg-background border-b border-gray-200 px-6 py-4 sticky top-0 z-50">
@@ -40,6 +84,7 @@ export default function Navbar() {
               </Link>
             );
           })}
+          <ThemeToggle theme={theme} onToggle={toggleTheme} className="ml-1" />
         </div>
 
         {/* Mobile hamburger button */}
@@ -83,6 +128,7 @@ export default function Navbar() {
               </Link>
             );
           })}
+          <ThemeToggle theme={theme} onToggle={toggleTheme} className="mt-1 self-start" />
         </div>
       )}
     </nav>

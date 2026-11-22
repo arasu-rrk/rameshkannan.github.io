@@ -68,7 +68,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <Script
+          id="theme-initializer"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(() => {
+  const savedTheme = localStorage.getItem('theme');
+  const theme = savedTheme === 'dark' || savedTheme === 'light'
+    ? savedTheme
+    : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  document.documentElement.dataset.theme = theme;
+})();`,
+          }}
+        />
+      </head>
       <body className={`${bitter.variable} ${playfairDisplay.variable} ${raleway.variable} antialiased`}>
         {gtmId && (
           <>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getImageUrl, profileImageUrl } from "@/lib/images";
+import { getYearsOfExperience } from "@/lib/resume";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -30,6 +31,7 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
+  const yearsOfExperience = getYearsOfExperience();
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
@@ -86,7 +88,7 @@ export default function Home() {
             Senior Software Engineer &nbsp;&middot;&nbsp; .NET &nbsp;&middot;&nbsp; Cloud Architecture
           </p>
           <p className="text-gray-600 leading-relaxed text-base sm:text-lg max-w-xl mx-auto md:mx-0">
-            Building robust, scalable systems for over 13 years. I specialise in .NET full-stack
+            Building robust, scalable systems for over {yearsOfExperience} years. I specialise in .NET full-stack
             development and cloud-native architectures on Azure, AWS, and GCP — turning complex
             engineering problems into clean, reliable solutions.
           </p>
