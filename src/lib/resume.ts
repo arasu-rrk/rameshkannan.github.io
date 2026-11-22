@@ -15,8 +15,8 @@ const monthNumbers: Record<string, number> = {
   Dec: 11,
 };
 
-/** Replaces the profile's experience placeholder with years since the earliest role. */
-export function getResumeProfile(asOf = new Date()): string {
+/** Returns the years since the earliest role in the resume data. */
+export function getYearsOfExperience(asOf = new Date()): number {
   const firstExperienceMonth = Math.min(...resume.experience.map(({ dates }) => {
     const match = /^([A-Za-z]{3})\s+(\d{4})\s*[–-]/.exec(dates);
     const month = match?.[1];
@@ -30,7 +30,12 @@ export function getResumeProfile(asOf = new Date()): string {
     return year * 12 + monthNumber;
   }));
   const currentMonth = asOf.getFullYear() * 12 + asOf.getMonth();
-  const yearsOfExperience = Math.max(0, Math.floor((currentMonth - firstExperienceMonth) / 12));
+  return Math.max(0, Math.floor((currentMonth - firstExperienceMonth) / 12));
+}
+
+/** Replaces the profile's experience placeholder with years since the earliest role. */
+export function getResumeProfile(asOf = new Date()): string {
+  const yearsOfExperience = getYearsOfExperience(asOf);
   const placeholder = '{{experienceYears}}';
 
   if (!resume.profile.includes(placeholder)) {

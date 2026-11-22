@@ -23,6 +23,7 @@ const blogSanitizeSchema: SanitizeOptions = {
       ),
       ['className', 'data-footnote-backref', 'heading-anchor'],
     ],
+    code: [['className', /^language-./, 'hljs']],
     span: [['className', /^hljs-/]],
   },
 };

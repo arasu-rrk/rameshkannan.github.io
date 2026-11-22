@@ -172,22 +172,22 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <span className={`text-xs font-semibold px-3 py-1 rounded-full ${colors.bg} ${colors.text}`}>
             {blog.category}
           </span>
-          <span className={`text-xs px-3 py-1 rounded-full bg-gray-100`}>
-          <time className="text-xs font-semibold text-gray-600" dateTime={blog.date}>
-            Published: {formatDate(blog.date)}
-          </time>
+          <span className="text-xs px-3 py-1 rounded-full bg-gray-100">
+            <time className="text-xs font-semibold text-gray-600" dateTime={blog.date}>
+              Published: {formatDate(blog.date)}
+            </time>
           </span>
           {blog.displayModifiedDate && (
-                                        <span className={`text-xs px-3 py-1 rounded-full bg-gray-100`}>
-            <time className="text-xs font-semibold text-gray-600" dateTime={blog.displayModifiedDate}>
-              Last updated: {formatDate(blog.displayModifiedDate)}
-            </time>
-                                        </span>
+            <span className="text-xs px-3 py-1 rounded-full bg-gray-100">
+              <time className="text-xs font-semibold text-gray-600" dateTime={blog.displayModifiedDate}>
+                Last updated: {formatDate(blog.displayModifiedDate)}
+              </time>
+            </span>
           )}
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl sm:text-4xl font-bold font-playfair text-gray-900 leading-tight mb-4">
+        <h1 className="text-3xl sm:text-4xl text-gray-900 leading-tight mb-4">
           {blog.title}
         </h1>
 
